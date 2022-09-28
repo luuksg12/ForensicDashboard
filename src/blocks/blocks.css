@@ -1,0 +1,49 @@
+.map{
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    background-color: antiquewhite;
+}
+.evidence{
+    font-size: 15px;
+    color: black;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: gray;
+    border-width: 2px;
+    border: solid #000;
+}
+.evidence.true{
+    background-color: lightgreen;
+    border-width: 2px;
+    border: solid green;
+}
+.evidence.false{
+    background-color: #FFCCCB;
+    border-width: 2px;
+    border: solid red;
+}
+.evidenceList{
+    color: black;
+    height: 50px;
+    width: 100%;
+    background-color: gray;
+}
+.evidenceList.true{
+    background-color: lightgreen;
+    border-width: 2px;
+    border: solid green;
+    border-radius: 20%;
+}
+.evidenceList.false{
+    background-color: #FFCCCB;
+    border-width: 2px;
+    border: solid red;
+    border-radius: 20%;
+}
+.evidenceItem{
+    align-items:center;
+    justify-content:center;
+}
