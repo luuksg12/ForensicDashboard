@@ -19,8 +19,8 @@ function Login (){
   //mapping data and storing in evidence variable 
     return (
       <div class="container-fluid p-0">
+        <div class="politie"></div>
           <div class="row-9 main d-flex align-items-center justify-content-center">
-
             <div class="d-flex flex-column">
               <input class="form-control form-control-lg" type="text" placeholder="Username"></input>
               <input class="form-control form-control-lg mt-1" type="text" placeholder="Password"></input>
