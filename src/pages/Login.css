@@ -1,0 +1,27 @@
+.main{
+    height: 90vh;
+    width: 100vw;
+    padding: 0;
+    background-image: url(../img/backgroundplaceholder.png);
+    background-position-x: center;
+}
+.bottombar{
+    display: flex; 
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+}
+.login{
+
+
+}
+.input{
+    background-color: red;
+}
+.logo{
+    margin:20px;
+    background-color: beige;
+}
+.logotext{
+    color: grey;
+}
