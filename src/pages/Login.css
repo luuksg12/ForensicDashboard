@@ -11,12 +11,9 @@
     width: 100%;
     padding: 0;
 }
-.login{
-
-
-}
-.input{
-    background-color: red;
+.input-background{
+    background-color: #CBCBCBE6 !important;
+    border-radius: 20%;
 }
 .logo{
     margin:20px;
