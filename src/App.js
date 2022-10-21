@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Link, Routes} from "react-router-dom";
 import './App.css';
+import Evidence from "./pages/Evidence";
 import Login from './pages/Login';
 import MapPage from "./pages/MapPage";
 import SessionInfo from "./pages/SessionInfo";
@@ -15,6 +16,7 @@ function App() {
             <Route exact path="sessions" element={<Sessions />} />
             <Route exact path="sessionInfo" element={<SessionInfo />} />
             <Route exact path="map" element={<MapPage />} />
+            <Route exact path="evidence" element={<Evidence />} />
           </Routes>
         </Router>
       </div>

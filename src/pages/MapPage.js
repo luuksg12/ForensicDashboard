@@ -12,12 +12,12 @@ function MapPage (){
           <div className="row-9 d-flex align-items-center justify-content-center mainHolder p-3">
                 <div className="col-8 map"><Map/></div>
                 <div className="col">
-                    <div className="row"><div>Evidence</div></div>
-                    <div className="row"><div>Evidence</div></div>
-                    <div className="row"><div>Evidence</div></div>
-                    <div className="row"><div>Evidence</div></div>
-                    <div className="row"><div>Evidence</div></div>
-                    <div className="row"><div>Evidence</div></div>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
                 </div>
           </div>
       </div>
