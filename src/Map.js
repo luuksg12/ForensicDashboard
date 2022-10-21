@@ -13,13 +13,13 @@ function Map (){
   //mapping data and storing in evidence variable 
   const evidence = evidenceList.map((value) =>
     <div key={value.id}>
-      <div class={"evidence " + value.discovered} style={{left: value.x + 'px', top: value.y +"px"}}>{value.id}: {value.type}</div>
+      <div className={"evidence " + value.discovered} style={{left: value.x + 'px', top: value.y +"px"}}>{value.id}: {value.type}</div>
     </div>
 );
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col map p-0 border border-3 border-primary">
+      <div className="container">
+        <div className="row">
+          <div className="col map p-0 border border-3 border-primary">
             {evidence}
           </div>
         </div>

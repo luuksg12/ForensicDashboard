@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Link, Routes} from "react-router-dom";
 import './App.css';
 import Login from './pages/Login';
+import SessionInfo from "./pages/SessionInfo";
 import Sessions from './pages/Sessions';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Login/>} />
             <Route exact path="sessions" element={<Sessions />} />
+            <Route exact path="sessionInfo" element={<SessionInfo />} />
           </Routes>
         </Router>
       </div>
