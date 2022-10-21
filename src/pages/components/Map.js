@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import "../Map.css"
 
 function Map (){
   const [evidenceList, setEvidenceList] = useState(
@@ -19,7 +20,7 @@ function Map (){
     return (
       <div className="container">
         <div className="row">
-          <div className="col map p-0 border border-3 border-primary">
+          <div className="col map p-0">
             {evidence}
           </div>
         </div>
