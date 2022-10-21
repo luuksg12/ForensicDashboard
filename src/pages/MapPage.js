@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom';
 import Map from "./components/Map";
-import "./MapPage.css"
+import "../styling/MapPage.css"
 
 function MapPage (){
 

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Sessions from "./Sessions";
 import { Link } from 'react-router-dom';
-import "./Login.css"
+import "../styling/Login.css"
 
 function Login (){
 

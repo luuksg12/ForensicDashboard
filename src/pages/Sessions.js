@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom';
-import "./Sessions.css"
+import "../styling/Sessions.css"
 
 function Sessions (){
   const [selectedItem, setSelectedItem] = useState()

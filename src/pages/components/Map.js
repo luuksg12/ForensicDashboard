@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "../Map.css"
+import "../../styling/Map.css"
 
 function Map (){
   const [evidenceList, setEvidenceList] = useState(

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom';
-import "./SessionInfo.css"
+import "../styling/SessionInfo.css"
 
 function SessionInfo (){
   const [SessionInfo, setSessionInfo] = useState(
