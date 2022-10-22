@@ -31,7 +31,7 @@ function SessionInfo (){
               <div className="row">
                 <div className="col">situatie : {SessionInfo.situation}</div>
               </div>
-              <Link to="/map" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link>
+              <Link to="/map" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link>
             </div>
           </div>
       </div>

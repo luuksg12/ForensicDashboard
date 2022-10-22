@@ -33,8 +33,8 @@ function Sessions (){
     </div>
   );
 
-  function handleSelection(e, index){
-    const setActive = document.getElementsByClassName('session')
+  function handleSelection(e: any, index: number){
+    var setActive = Array.from(document.getElementsByClassName('session'))
     for(let item of setActive){
       item.classList.remove('selected')
     }
@@ -47,11 +47,11 @@ function Sessions (){
         <div className="politie"></div>
           <div className="row-9 main d-flex align-items-center justify-content-center">
             <div className="d-flex flex-column sessionHolder">
-              <ul onChange={handleSelection} style={{ listStyle: 'none', padding: 0 }}>
+              <ul onChange={(e) => handleSelection} style={{ listStyle: 'none', padding: 0 }}>
                 {sessions}
               </ul>
               
-              <Link to="/sessionInfo" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="Selecteer"></input></Link>
+              <Link to="/sessionInfo" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="Selecteer"></input></Link>
             </div>
           </div>
           <div className="bottombar row-3 container">
