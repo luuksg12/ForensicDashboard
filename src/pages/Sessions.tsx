@@ -1,5 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
+import { SessionModel } from "../models/session.model";
+import { SessionQuery } from "../querys/SessionQuery";
 import "../styling/Sessions.css"
 
 function Sessions (){
@@ -13,17 +15,31 @@ function Sessions (){
     ]
   )
 
+  const listOfSessions: SessionModel[] = [
+    {
+        id: "",
+        description: "",
+        superVisor: "",
+        events: [],
+        date: new Date(),
+        duration: new Date(),
+    }
+  ];
+
   const [SessionList, setSessionList] = useState(
     //placeholder data
-    [
-      { id: "1", date:"10/19/2022 3:24" },
-      { id: "2", date:"09/19/2022 2:32" },
-    ]
+    // [
+    //   { id: "1", date:"10/19/2022 3:24" },
+    //   { id: "2", date:"09/19/2022 2:32" },
+    // ]
+    listOfSessions
   )
+
+  // const [theArray, setTheArray] = useState(friendsArray);
 
   const sessions = SessionList.map((item, index) =>
     <li key={index} onClick={() => handleSelection(item, index)} style={{cursor : 'pointer'}}>
-      <div className={"session"}>{item.date}</div>
+      <div className={"session"}>{item.description }</div>
     </li>
   );
 
@@ -33,7 +49,20 @@ function Sessions (){
     </div>
   );
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData(){
+    var fetchedSessions = await SessionQuery.GetSessions()
+
+    console.log(fetchedSessions)
+
+    setSessionList(fetchedSessions)
+  }
+
   function handleSelection(e: any, index: number){
+    console.log(index)
     var setActive = Array.from(document.getElementsByClassName('session'))
     for(let item of setActive){
       item.classList.remove('selected')

@@ -8,9 +8,4 @@ export class BundelService{
     constructor(){
         console.log(this.tester)
     }
-
-    public graai(){
-        return 12;
-    }
-
 }

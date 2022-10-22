@@ -23,12 +23,6 @@ export class WebSocketService{
                     cacheMessage = numberr
                     messageService.sendMessage(json)
                 }
-
-                // console.log(json)
-
-            // if ((json.event = "data")) {
-            //     messageService.sendMessage("honden")
-            // }
             } catch (err) {
             console.log(err);
             }
