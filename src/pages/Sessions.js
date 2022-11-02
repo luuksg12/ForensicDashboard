@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom';
+import Nav from "./components/Nav";
 import "../styling/Sessions.css"
 
 function Sessions (){
@@ -16,8 +17,11 @@ function Sessions (){
   const [SessionList, setSessionList] = useState(
     //placeholder data
     [
+      //api call naar sessions
       { id: "1", date:"10/19/2022 3:24" },
       { id: "2", date:"09/19/2022 2:32" },
+
+      //namen object
     ]
   )
 
@@ -44,6 +48,7 @@ function Sessions (){
   //mapping data and storing in evidence variable 
     return (
       <div className="container-fluid p-0">
+        <Nav/>
         <div className="politie"></div>
           <div className="row-9 main d-flex align-items-center justify-content-center">
             <div className="d-flex flex-column sessionHolder">

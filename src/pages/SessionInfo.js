@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom';
+import Nav from "./components/Nav";
 import "../styling/SessionInfo.css"
 
 function SessionInfo (){
@@ -11,27 +12,23 @@ function SessionInfo (){
   //mapping data and storing in evidence variable 
     return (
       <div className="container-fluid p-0">
+        <Nav/>
         <div className="politie"></div>
-          <div className="row-9 main d-flex align-items-center justify-content-center">
-            <div className="d-flex flex-column sessionHolder text-left">
-              <div className="row">
-                <div className="col">{SessionInfo.map}</div>
-                <div className="col">{SessionInfo.date}</div>
-                <div className="col">{SessionInfo.time}</div>
-              </div>
-              <div className="row">
-                <div className="col">Duur : {SessionInfo.duration}</div>
-              </div>
-              <div className="row">
-                <div className="col">Student 1 : {SessionInfo.player1}</div>
-              </div>
-              <div className="row">
-                <div className="col">Student 2 : {SessionInfo.player2}</div>
-              </div>
-              <div className="row">
-                <div className="col">situatie : {SessionInfo.situation}</div>
-              </div>
-              <Link to="/map" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link>
+        <div class="card container">
+            <img class="card-img-top" src="..." alt="Card image cap"/>
+            <div class="card-body">
+              <h5 class="card-title">{SessionInfo.map}</h5>
+              <p class="card-text">{SessionInfo.situation}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{SessionInfo.date} - {SessionInfo.time}</li>
+              <li class="list-group-item">Duur : {SessionInfo.duration}</li>
+              <li class="list-group-item">{SessionInfo.player1} / {SessionInfo.player2}</li>
+              <li class="list-group-item"><Link to="/map" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link></li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
             </div>
           </div>
       </div>
