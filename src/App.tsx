@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes} from "react-router-dom";
 import './App.css';
 import Evidence from "./pages/Evidence";
@@ -12,11 +13,11 @@ function App() {
       <div className="App-header">
         <Router>
           <Routes>
-            <Route exact path="/" element={<Login/>} />
-            <Route exact path="sessions" element={<Sessions />} />
-            <Route exact path="sessionInfo" element={<SessionInfo />} />
-            <Route exact path="map" element={<MapPage />} />
-            <Route exact path="evidence" element={<Evidence />} />
+            <Route path="/" element={<Login/>} />
+            <Route path="sessions" element={<Sessions />} />
+            <Route path="sessionInfo" element={<SessionInfo />} />
+            <Route path="map" element={<MapPage />} />
+            <Route path="evidence" element={<Evidence />} />
           </Routes>
         </Router>
       </div>
