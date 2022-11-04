@@ -14,21 +14,21 @@ function SessionInfo (){
       <div className="container-fluid p-0">
         <Nav/>
         <div className="politie"></div>
-        <div class="card container">
-            <img class="card-img-top" src="..." alt="Card image cap"/>
-            <div class="card-body">
-              <h5 class="card-title">{SessionInfo.map}</h5>
-              <p class="card-text">{SessionInfo.situation}</p>
+        <div className="card container">
+            <img className="card-img-top" src="..." alt="Card image cap"/>
+            <div className="card-body">
+              <h5 className="card-title">{SessionInfo.map}</h5>
+              <p className="card-text">{SessionInfo.situation}</p>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">{SessionInfo.date} - {SessionInfo.time}</li>
-              <li class="list-group-item">Duur : {SessionInfo.duration}</li>
-              <li class="list-group-item">{SessionInfo.player1} / {SessionInfo.player2}</li>
-              <li class="list-group-item"><Link to="/map" style={{ textDecoration: 'none' }}><input class="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link></li>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">{SessionInfo.date} - {SessionInfo.time}</li>
+              <li className="list-group-item">Duur : {SessionInfo.duration}</li>
+              <li className="list-group-item">{SessionInfo.player1} / {SessionInfo.player2}</li>
+              <li className="list-group-item"><Link to="/map" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link></li>
             </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+            <div className="card-body">
+              <a href="#" className="card-link">Card link</a>
+              <a href="#" className="card-link">Another link</a>
             </div>
           </div>
       </div>
