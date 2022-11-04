@@ -26,20 +26,9 @@ export class HttpHelper {
 
     static async DataCallItems<Type>(url: string, data: {}) {
         let result: Array<Type> = new Array<Type>()
-
-        await fetch(url, {
-            headers: {
-                'method': 'post',
-                'mode': 'no-cors',   
-                'Accept': 'application/json',
-                'Access-Control-Allow-Headers': '*',
-                'Access-Control-Allow-Origin': '*',
-                'Data' : JSON.stringify(data),
-            }
-        })
-            .then(response =>  response.json())
-            .then(data => result = this.DataListCreater<Type>(data))
-            .catch(error => console.error('Unable to get items.', error));
+        await fetch(url)
+            .then(response => response.json())
+            .then(data =>  result = this.DataListCreater<Type>(data));
         return result
     };
 }
