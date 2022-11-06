@@ -19,3 +19,10 @@
 .list-group-item{
     background-color: #B8B7BB !important;
 }
+.mapPlaceholder{
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    background-color: antiquewhite;
+    border: solid #000 2px;
+}

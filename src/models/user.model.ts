@@ -22,3 +22,12 @@ export class UserModelGui extends UserModel{
     online: boolean = false
 
 }
+
+export interface User {
+    id: string
+    firstname: string
+    addition: any
+    lastname: string
+    role: number
+  }
+  
