@@ -16,7 +16,7 @@ export interface Session {
     id: string
     description: string
     startTime: string
-    stopTime: any
+    stopTime: any 
     sceneId: string
     participants: Participant[]
     scene: Scene

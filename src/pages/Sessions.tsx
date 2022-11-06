@@ -29,11 +29,6 @@ function Sessions() {
   ];
 
   const [SessionList, setSessionList] = useState(
-    //placeholder data
-    // [
-    //   { id: "1", date:"10/19/2022 3:24" },
-    //   { id: "2", date:"09/19/2022 2:32" },
-    // ]
     listOfSessions
   )
 

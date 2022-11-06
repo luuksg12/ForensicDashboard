@@ -73,7 +73,7 @@ function SessionInfo() {
           <li className="list-group-item">Scene: {SessionInfo?.scene?.name}</li>
           <li className="list-group-item">Start tijd: {SessionInfo?.startTime}</li>
           <li className="list-group-item">Stop tijd: {(!!SessionInfo?.stopTime) ? SessionInfo?.stopTime : 'nog niet gestopt'}</li>
-          <li className="list-group-item"><Link to="/map" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link></li>
+          <li className="list-group-item"><Link to="/map" state={{data: SessionInfo}} style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link></li>
         </ul>
         <div className="card-body">
           <a href="#" className="card-link">Card link</a>
