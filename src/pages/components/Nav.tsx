@@ -9,8 +9,7 @@ function Nav (){
             <div className="collapse navbar-collapse container justify-content-between" id="navbarNavAltMarkup">
                 <div className="navbar-nav navpad">
                     <a className="nav-item nav-link" href="/Sessions">Sessies</a>
-                    <a className="nav-item nav-link" href="/sessioninfo">Sessies</a>
-                    <a className="nav-item nav-link" href="/Map">Kaart</a>
+                    <a className="nav-item nav-link" href="/sessioninfo">Informatie</a>
                 </div>
                 <div className="navbar-nav logout">
                 <a className="nav-item nav-link" href="/Login">Logout</a>

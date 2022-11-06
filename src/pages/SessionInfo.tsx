@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom';
 import Nav from "./components/Nav";
+import Map from "./components/Map";
 import "../styling/SessionInfo.css"
 
 function SessionInfo (){
@@ -11,24 +12,35 @@ function SessionInfo (){
 
   //mapping data and storing in evidence variable 
     return (
-      <div className="container-fluid p-0">
+      <div>
         <Nav/>
-        <div className="politie"></div>
-        <div className="card container">
-            <img className="card-img-top" src="..." alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title">{SessionInfo.map}</h5>
-              <p className="card-text">{SessionInfo.situation}</p>
-            </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">{SessionInfo.date} - {SessionInfo.time}</li>
-              <li className="list-group-item">Duur : {SessionInfo.duration}</li>
-              <li className="list-group-item">{SessionInfo.player1} / {SessionInfo.player2}</li>
-              <li className="list-group-item"><Link to="/map" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link></li>
-            </ul>
-            <div className="card-body">
-              <a href="#" className="card-link">Card link</a>
-              <a href="#" className="card-link">Another link</a>
+        <div className="container-fluid py-5">
+          <div className="politie"></div>
+          <div className="emptyHolder"></div>
+            <div className="card container cardHolder">
+
+              <div className="card-body">
+                <h5 className="card-title">{SessionInfo.map}</h5>
+                <p className="card-text">{SessionInfo.situation}</p>
+              </div>
+
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">{SessionInfo.date} - {SessionInfo.time}</li>
+                <li className="list-group-item">Duur : {SessionInfo.duration}</li>
+                <li className="list-group-item">{SessionInfo.player1} / {SessionInfo.player2}</li>
+              </ul>
+
+              <div className="row py-3">
+                <div className="col-8"><Map/></div>
+                <div className="col">
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                </div>
+              </div>
             </div>
           </div>
       </div>
