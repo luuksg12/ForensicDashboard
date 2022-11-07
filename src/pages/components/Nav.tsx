@@ -8,11 +8,11 @@ function Nav (){
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="collapse navbar-collapse container justify-content-between" id="navbarNavAltMarkup">
                 <div className="navbar-nav navpad">
-                    <a className="nav-item nav-link" href="/Sessions">Sessies</a>
-                    <a className="nav-item nav-link" href="/sessioninfo">Informatie</a>
+                    <Link to="/Sessions" className="Navlink"><p>Sessies</p></Link>
+                    <Link to="/Sessioninfo" className="Navlink"><p>Informatie</p></Link>
                 </div>
                 <div className="navbar-nav logout">
-                <a className="nav-item nav-link" href="/Login">Logout</a>
+                <Link to="/Login" className="Navlink"><p>Logout</p></Link>
                 </div>
             </div>
         </nav>

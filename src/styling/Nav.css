@@ -8,9 +8,12 @@
     display:inline-block !important;
     float: none;
     vertical-align: top;
-    background-color: #cbcbcb7a !important;
+    background-color: #3131317a !important;
 }
-.navpad{
-}
-.logout{
+.Navlink{
+    color: #eeeeee !important;
+    text-decoration: none;
+    font-weight:600;
+    padding-right: 2rem;
+    padding-top: 1rem;
 }
