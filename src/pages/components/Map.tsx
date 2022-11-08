@@ -16,16 +16,14 @@ export function Map(props: SessionProp) {
 
   //mapping data and storing in evidence variable 
   const evidence = evidenceList.map((value, index) =>
-    <div key={index}>
-      <div className={"evidence " + value} style={{ left: ((value.x * scaleX) + 200) + 'px', top: ((value.y * scaleY) - 25) + "px" }}>{EvidenceType[value.type]}: {value.type}</div>
-    </div>
+    <div key={value.id} className={"evidence " + value} style={{ left: ((value.x * 100)) + 'px', top: (385 - (value.y * 100)) + "px" }}>{EvidenceType[value.type]}: {value.type}</div>
   );
   return (
     <div className="container">
       <div className="row">
         <div className="col map p-0">
-            <img src={`http://145.24.222.175/simulation/map?id=${session.scene.id}`} style={{ width: 850, height: 770 }}></img>
-          
+          <img src={`http://145.24.222.175/simulation/map?id=${session.scene.id}`} style={{ width: '100%', height: '100%' }}></img>
+
           {evidence}
         </div>
       </div>
