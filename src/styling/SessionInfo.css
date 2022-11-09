@@ -22,7 +22,6 @@
 .mapPlaceholder{
     position: relative;
     height: 60vh;
-    width: 100%;
     background-color: antiquewhite;
     border: solid #000 2px;
 }

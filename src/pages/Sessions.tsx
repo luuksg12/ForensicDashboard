@@ -36,8 +36,8 @@ function Sessions() {
 
   const sessions = SessionList.map((item, index) => {
     return (
-      <li key={index} onClick={() => handleSelection(item, index)} style={{ cursor: 'pointer' }}>
-        <div className={"session"}>{item.description}</div>
+      <li className={"SessionItem"} key={index}>
+        <Link className="SessionLink" to={"/sessionInfo"} style={{ textDecoration: 'none' }}><div>{item.description}</div></Link>
       </li>
     )
   }
@@ -49,8 +49,6 @@ function Sessions() {
       <div className="logotext">{value.name}</div>
     </div>
   );
-
-
 
   useEffect(() => {
     fetchData();
@@ -64,18 +62,6 @@ function Sessions() {
     setSessionList(fetchedSessions)
   }
 
-
-  function handleSelection(e: any, index: number) {
-    console.log(index)
-    
-    var setActive = Array.from(document.getElementsByClassName('session'))
-    for (let item of setActive) {
-      item.classList.remove('selected')
-    }
-    setActive[index].classList.toggle('selected')
-    console.log(setActive[index])
-    setSelectedItem(e)
-  }
   //mapping data and storing in evidence variable 
   return (
     <div className="container-fluid p-0">
@@ -83,11 +69,9 @@ function Sessions() {
       <div className="politie"></div>
       <div className="row-9 main d-flex align-items-center justify-content-center">
         <div className="d-flex flex-column sessionHolder">
-          <ul onChange={(e) => handleSelection} style={{ listStyle: 'none', padding: 0 }}>
+          <ul style={{ listStyle: 'none', padding: 0 }}>
             {sessions}
           </ul>
-          <Link to="/sessionInfo" state={{data: selectedItem.id}} style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="Selecteer"></input></Link>
-          
         </div>
       </div>
       <div className="bottombar row-3 container">
