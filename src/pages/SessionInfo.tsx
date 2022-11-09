@@ -71,14 +71,9 @@ function SessionInfo (){
 
               <div className="card-body">
                 <h5 className="card-title">{SessionInfoPH.map}</h5>
+                <p className="info">{SessionInfoPH.date} - {SessionInfoPH.time} | Duur : {SessionInfoPH.duration} | {SessionInfoPH.player1} / {SessionInfoPH.player2}</p>
                 <p className="card-text">{SessionInfoPH.situation}</p>
               </div>
-
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">{SessionInfoPH.date} - {SessionInfoPH.time}</li>
-                <li className="list-group-item">Duur : {SessionInfoPH.duration}</li>
-                <li className="list-group-item">{SessionInfoPH.player1} / {SessionInfoPH.player2}</li>
-              </ul>
 
               <div className="row py-3">
                 <div className="col-8 mapPlaceholder"></div>

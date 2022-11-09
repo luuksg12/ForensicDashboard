@@ -12,7 +12,7 @@ function Nav (){
                     <Link to="/Sessioninfo" className="Navlink"><p>Informatie</p></Link>
                 </div>
                 <div className="navbar-nav logout">
-                <Link to="/Login" className="Navlink"><p>Logout</p></Link>
+                    <Link to="/Login" className="Navlink"><p>Logout</p></Link>
                 </div>
             </div>
         </nav>
