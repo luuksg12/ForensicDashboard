@@ -1,0 +1,3 @@
+[submodule "game-server"]
+	path = game-server
+	url = https://ci.tno.nl/gitlab/vpil-demos/game-server.git
