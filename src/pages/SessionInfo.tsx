@@ -76,14 +76,14 @@ function SessionInfo (){
               </div>
 
               <div className="row py-3">
-                <div className="col-8 mapPlaceholder"></div>
+                <div className="col-8 ms-3 mapPlaceholder"></div>
                 <div className="col">
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="blood"></input></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
                 </div>
               </div>
             </div>

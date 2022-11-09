@@ -29,3 +29,9 @@
 .info{
     color:#000;
 }
+.evidenceItem{
+    background-color: aliceblue;
+    border: #000 1px solid;
+    border-radius: 2rem;
+    color: #000;
+}
