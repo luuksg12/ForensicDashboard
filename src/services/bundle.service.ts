@@ -1,5 +1,3 @@
-import { WebSocketService } from "./websocket.service";
-
 export class BundelService{
     private tester = 12
 
