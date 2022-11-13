@@ -1,9 +1,8 @@
 import { Subject } from 'rxjs';
 
-import { useQuery, useQueryClient, QueryClient } from "@tanstack/react-query";
 import { SockMessageModel } from '../models/sockmessage.model';
 
-export class WebSocketService{
+export class WebSocketServiceV1{
     constructor(){
         var ws = new WebSocket("wss://websocket.cloudkwekerijbloemendaal.com/ws");
 
