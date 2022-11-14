@@ -78,12 +78,12 @@ function SessionInfo (){
               <div className="row py-3">
                 <div className="col-8 ms-3 mapPlaceholder"></div>
                 <div className="col">
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
                 </div>
               </div>
             </div>

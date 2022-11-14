@@ -37,7 +37,7 @@ function Sessions() {
   const sessions = SessionList.map((item, index) => {
     return (
       <li className={"SessionItem"} key={index}>
-        <Link className="SessionLink" to={"/sessionInfo"} style={{ textDecoration: 'none' }}><div>{item.description}</div></Link>
+        <Link className="SessionLink grow" to={"/sessionInfo"} style={{ textDecoration: 'none' }}><div>{item.description}</div></Link>
       </li>
     )
   }
@@ -45,7 +45,7 @@ function Sessions() {
   );
 
   const logos = logoList.map((value) =>
-    <div className="col-1 logo" key={value.id}>
+    <div className="col-1 logo grow" key={value.id}>
       <div className="logotext">{value.name}</div>
     </div>
   );

@@ -24,15 +24,19 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.grow { 
+  transition: all .2s ease-in-out; 
+}
+  
+.grow:hover { 
+  transform: scale(1.1); 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.growSmall { 
+  transition: all .1s ease-in-out; 
 }
+  
+.growSmall:hover { 
+  transform: scale(1.02); 
+}
+
