@@ -1,39 +1,117 @@
-import { Subject } from 'rxjs';
+import { WebsocketBuilder, Websocket, ConstantBackoff } from "websocket-ts";
+import {
+    AnimationListMessage,
+    ConsoleLogsMessage,
+    GuiCurrentSpawnPointMessage,
+    GUIMessage,
+    GuiSceneChangeMessage,
+    GuiTrackerModelPairListMessage,
+    InteractiveDisplayStateListMessage,
+    LinkableModelListMessage,
+    PerformanceMessage,
+    QuestionAnswerListMessage,
+    RegisteredPlayerListMessage,
+    SceneListMessage,
+    SpawnPointListMessage,
+    ToggleableObjectListMessage,
+} from "@vpil/shared";
+import {IAppStateModel} from "@vpil/gui/src/services/states/app-state";
 
-import { useQuery, useQueryClient, QueryClient } from "@tanstack/react-query";
-import { SockMessageModel } from '../models/sockmessage.model';
+export class WebsocketService{
+    private ws: Websocket | null = null;
+    private wsServer = "";
 
-export class WebSocketService{
-    constructor(){
-        var ws = new WebSocket("wss://websocket.cloudkwekerijbloemendaal.com/ws");
+    constructor() {
+        this.wsServer = "ws://localhost:3000/gui";
+        this.updateConnection();
+    }
 
-        var cacheMessage = new SockMessageModel()
+    public init(): WebsocketService {
+        console.log("Init wsService");
+        return this;
+    }
 
-        ws.onopen = (event) => {
-            ws.send(JSON.stringify(""));
-            messageService.sendMessage(JSON.stringify(""))
-        };
-    
-        ws.onmessage = function (event) {
-            const json = JSON.parse(event.data);
-            try {
-                var numberr = Object.assign(new SockMessageModel(), json)
-
-                if (numberr.id !== cacheMessage.id){
-                    cacheMessage = numberr
-                    messageService.sendMessage(json)
+    private updateConnection() {
+        if (this.ws) this.ws.close();
+        this.ws = new WebsocketBuilder(this.wsServer)
+            .withBackoff(new ConstantBackoff(3000))
+            .onOpen((i, ev) => {
+                console.log("opened");
+            })
+            .onClose((i, ev) => {
+                console.log("closed");
+            })
+            .onError((i, ev) => {
+                console.log("error");
+            })
+            .onMessage((i: Websocket, ev: MessageEvent<string>) => {
+                const msg = JSON.parse(ev.data) as GUIMessage<Object>;
+                switch (msg.method) {
+                    case "player_list":
+                        const playerListMsg = msg as RegisteredPlayerListMessage;
+                        console.log(playerListMsg);
+                        break;
+                    case "performance":
+                        const performanceMsg = msg as PerformanceMessage;
+                        break;
+                    case "scene_list":
+                        const sceneListMsg = msg as SceneListMessage;
+                        console.log(sceneListMsg);
+                        break;
+                    case "animation_list":
+                        const animationListMsg = msg as AnimationListMessage;
+                        console.log(animationListMsg);
+                        break;
+                    case "spawnpoint_list":
+                        const spawnPointListMsg = msg as SpawnPointListMessage;
+                        console.log(spawnPointListMsg);
+                        break;
+                    case "linkablemodel_list":
+                        const linkableModelListMsg = msg as LinkableModelListMessage;
+                        console.log(linkableModelListMsg);
+                        break;
+                    case "interactivedisplay_list":
+                        const interactiveDisplayListMsg = msg as InteractiveDisplayStateListMessage;
+                        console.log(interactiveDisplayListMsg);
+                        break;
+                    case "toggleableobject_list":
+                        const toggleableObjectListMsg = msg as ToggleableObjectListMessage;
+                        console.log(toggleableObjectListMsg);
+                        break;
+                    case "trackermodelpairs_list":
+                        const tmpMsg = msg as GuiTrackerModelPairListMessage;
+                        console.log(tmpMsg);
+                        break;
+                    case "console_logs":
+                        const consoleLogsMsg = msg as ConsoleLogsMessage;
+                        console.log(consoleLogsMsg);
+                        break;
+                    case "current_spawnpoint":
+                        const currSpawnPointMsg = msg as GuiCurrentSpawnPointMessage;
+                        console.log(currSpawnPointMsg);
+                        break;
+                    case "question_answer_list":
+                        const qaListMsg = msg as QuestionAnswerListMessage;
+                        console.log(qaListMsg);
+                        break;
+                    case "scene_change":
+                        const sceneChangeMsg = msg as GuiSceneChangeMessage;
+                        console.log(sceneChangeMsg);
+                        break;
+                    default:
+                        break;
                 }
-            } catch (err) {
-            console.log(err);
-            }
-        };
+            })
+            .onRetry((i, ev) => {
+                console.log("retry");
+            })
+            .build();
+    }
+
+    public send(data: any) {
+        if (!this.ws) {
+            return console.warn(`Could not send message, no WS connection!`);
+        }
+        this.ws.send(data);
     }
 }
-
-const subject = new Subject();
-
-export const messageService = {
-    sendMessage: (message: any) => subject.next(message),
-    clearMessages: () => subject.next({}),
-    getMessage: () => subject.asObservable()
-};

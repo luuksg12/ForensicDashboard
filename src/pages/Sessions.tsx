@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { SessionModel } from "../models/session.model";
 import { SessionQuery } from "../querys/SessionQuery";
 import Nav from "./components/Nav";
-import "../styling/Sessions.css"
+import "../styling/Sessions.css";
 import SessionInfo from "./SessionInfo";
+import { WebsocketService } from "../services/websocket.service";
 
 function Sessions() {
   const [selectedItem, setSelectedItem] = useState({id:"none"})
-
+  const [webSock, setWebSock] = useState(new WebsocketService())
   const [logoList, setlogoList] = useState(
     //placeholder data
     [
@@ -58,7 +59,6 @@ function Sessions() {
 
   async function fetchData() {
     var fetchedSessions = await SessionQuery.GetSessions()
-
     console.log(fetchedSessions)
 
     setSessionList(fetchedSessions)
