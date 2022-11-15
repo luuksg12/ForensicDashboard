@@ -6,7 +6,7 @@ import Nav from "./components/Nav";
 import "../styling/MapPage.css"
 import { Session } from "../models/session.model";
 import { EvidenceType } from "../models/evidence.model"
-import { messageService } from "../services/websocket-service-v1";
+import { WebsocketService } from "../services/websocket.service";
 
 function MapPage (){
   const location = useLocation();

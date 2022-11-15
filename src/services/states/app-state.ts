@@ -1,5 +1,6 @@
+import { themeStorageKey, websocketServerKey } from "../../utils/utils";
 import { UpdateStream } from "../meiosis";
-import WebsocketServiceV2 from "../websocket-service-v2";
+import { WebsocketService } from "../websocket.service";
 import {
   Animation,
   ChangeVisibilityMessage,
@@ -25,10 +26,8 @@ import {
   LinkTrackerMessage,
   UnlinkTrackerMessage,
 } from "@vpil/shared";
-import { themeStorageKey, websocketServerKey } from "../utils/utils";
-
 const log = console.log;
-const wsService = new WebsocketServiceV2();
+const wsService = new WebsocketService();
 
 export interface IAppStateModel {
   app: {
@@ -45,7 +44,7 @@ export interface IAppStateModel {
     activeScene: string;
     animations: Animation[];
     consoleLogs: ConsoleLogs;
-    wsService: WebsocketServiceV2;
+    wsService: WebsocketService;
     wsServer: string;
     route: string;
     theme: string;
