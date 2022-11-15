@@ -6,18 +6,12 @@ import Nav from "./components/Nav";
 import "../styling/MapPage.css"
 import { Session } from "../models/session.model";
 import { EvidenceType } from "../models/evidence.model"
-import { messageService } from "../services/websocket-service-v1";
+import { WebsocketService } from "../services/websocket.service";
 
 function MapPage (){
   const location = useLocation();
   const sessionInformation: Session = location.state?.data;
-
-  useEffect(() => {
-    var message = messageService.getMessage().subscribe((data) => {
-      console.log('Subscriber B:', data);
-  });
-
-  }, [0])
+  
 
   //mapping data and storing in evidence variable 
 
