@@ -6,11 +6,8 @@ import "../styling/SessionInfo.css"
 import { Session } from './../models/session.model'
 import { User } from './../models/user.model'
 
-function SessionInfo (){
-  const [SessionInfoPH, setSessionInfoPH] = useState(
-    //placeholder data
-      { id: "1", date: "10/4/2022", time:"10:23", duration: "12:21", player1: "Jan Joost", player2: "John Doe", map: "cabin", situation: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat" },
-  )
+
+function SessionInfo() {
   const location = useLocation();
   const sessionId = location.state?.data;
 
@@ -60,36 +57,35 @@ function SessionInfo (){
     <li key={index} className="list-group-item">Supervisor {index+1}: {supervisor.firstname} {supervisor.lastname}</li>
   );
 
-  //mapping data and storing in evidence variable 
-    return (
-      <div>
-        <Nav/>
-        <div className="container-fluid py-5">
-          <div className="politie"></div>
-          <div className="emptyHolder"></div>
-            <div className="card container cardHolder">
+  return (
+    <div>
+      <Nav/>
+      <div className="container-fluid py-5">
+        <div className="politie"></div>
+        <div className="emptyHolder"></div>
+          <div className="card container cardHolder">
 
-              <div className="card-body">
-                <h5 className="card-title">{SessionInfoPH.map}</h5>
-                <p className="info">{SessionInfoPH.date} - {SessionInfoPH.time} | Duur : {SessionInfoPH.duration} | {SessionInfoPH.player1} / {SessionInfoPH.player2}</p>
-                <p className="card-text">{SessionInfoPH.situation}</p>
-              </div>
-
-              <div className="row py-3">
-                <div className="col-8 ms-3 mapPlaceholder"></div>
-                <div className="col">
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
-                      <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
-                </div>
-              </div>
+            <div className="card-body">
+              <h5 className="card-title">{SessionInfo?.scene?.name}</h5>
+              <p className="info">{SessionInfo?.startTime} | Duur : {(!!SessionInfo?.stopTime) ? SessionInfo?.stopTime : 'nog niet gestopt'} | {trainees} | {supervisors}</p>
+              <p className="card-text">{SessionInfo?.description}</p>
             </div>
+
+            <div className="row py-3">
+              <div className="col-8 ms-3 mapPlaceholder"></div>
+              <div className="col">
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+              </div>
           </div>
+        </div>
       </div>
-    )
-  }
+    </div>
+  )
+}
 
 export default SessionInfo;
