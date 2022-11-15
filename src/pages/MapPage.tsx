@@ -17,13 +17,6 @@ function MapPage (){
     return <Link to="/evidence" key={index} style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value={`${index} ${EvidenceType[evidence.type]}`}></input></Link>
   })
 
-  useEffect(() => {
-    var message = messageService.getMessage().subscribe((data) => {
-      console.log('Subscriber B:', data);
-  });
-
-  }, [0])
-
   //mapping data and storing in evidence variable 
     return (
       <div className="container p-0">
