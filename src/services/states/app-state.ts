@@ -26,7 +26,6 @@ import {
   LinkTrackerMessage,
   UnlinkTrackerMessage,
 } from "@vpil/shared";
-
 const log = console.log;
 const wsService = new WebsocketService();
 

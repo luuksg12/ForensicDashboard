@@ -1,4 +1,7 @@
 import { WebsocketBuilder, Websocket, ConstantBackoff } from "websocket-ts";
+import { IStore, store } from "./meiosis";
+import { IAppStateModel } from "./states/app-state";
+import _ from "lodash";
 import {
     AnimationListMessage,
     ConsoleLogsMessage,
@@ -15,7 +18,6 @@ import {
     SpawnPointListMessage,
     ToggleableObjectListMessage,
 } from "@vpil/shared";
-import {IAppStateModel} from "@vpil/gui/src/services/states/app-state";
 
 export class WebsocketService{
     private ws: Websocket | null = null;

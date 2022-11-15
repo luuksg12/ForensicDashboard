@@ -59,21 +59,17 @@ function Sessions() {
 
   async function fetchData() {
     var fetchedSessions = await SessionQuery.GetSessions()
-    console.log(fetchedSessions)
-
     setSessionList(fetchedSessions)
   }
 
 
   function handleSelection(e: any, index: number) {
-    console.log(index)
     
     var setActive = Array.from(document.getElementsByClassName('session'))
     for (let item of setActive) {
       item.classList.remove('selected')
     }
     setActive[index].classList.toggle('selected')
-    console.log(setActive[index])
     setSelectedItem(e)
   }
   //mapping data and storing in evidence variable 

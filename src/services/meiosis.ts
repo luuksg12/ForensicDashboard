@@ -1,6 +1,6 @@
-import { merge } from "../utils/mergerino";
 import { scan, stream } from "flyd";
 import { appStateMgmt, IAppStateActions, IAppStateModel } from "./states/app-state";
+import { merge } from "./utils/mergerino";
 
 export interface IStore {
   actions: IAppStateActions;
