@@ -5,11 +5,11 @@ import { SessionQuery } from "../querys/SessionQuery";
 import Nav from "./components/Nav";
 import "../styling/Sessions.css";
 import SessionInfo from "./SessionInfo";
-import { WebsocketService } from "../services/websocket.service";
+import {websocketService} from "../services/singeltons";
 
 function Sessions() {
   const [selectedItem, setSelectedItem] = useState({id:"none"})
-  const [webSock, setWebSock] = useState(new WebsocketService())
+  const [webSock, setWebSock] = useState(websocketService)
   const [logoList, setlogoList] = useState(
     //placeholder data
     [
