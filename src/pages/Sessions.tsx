@@ -37,8 +37,8 @@ function Sessions() {
 
   const sessions = SessionList.map((item, index) => {
     return (
-      <li key={index} onClick={() => handleSelection(item, index)} style={{ cursor: 'pointer' }}>
-        <div className={"session"}>{item.description}</div>
+      <li className={"SessionItem"} key={index} onClick={() => handleSelection(item, index)} style={{ cursor: 'pointer' }}>
+        <div className="SessionLink grow">{item.description}</div>
       </li>
     )
   }
@@ -46,7 +46,7 @@ function Sessions() {
   );
 
   const logos = logoList.map((value) =>
-    <div className="col-1 logo" key={value.id}>
+    <div className="col-1 logo grow" key={value.id}>
       <div className="logotext">{value.name}</div>
     </div>
   );

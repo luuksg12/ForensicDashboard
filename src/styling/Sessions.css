@@ -23,10 +23,6 @@
 .session{
     color: #000;
 }
-.selected{
-    background-color: #e9e9e9 !important;
-    border-radius: 20px;
-}
 .logo{
     margin:20px;
     background-color: beige;
@@ -34,13 +30,12 @@
 .logotext{
     color: grey;
 }
-.politie{
-    position: absolute;
-    background-image: url(../img/politielogo.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    left: 2vw;
-    top: 2vh;
-    width: 110px;
-    height: 125px;
+.SessionItem:hover{
+    color:#000;
+    background-color: #e9e9e9 !important;
+    border-radius: 20px;
+    cursor: 'pointer';
+}
+.SessionLink{
+    color: #000;
 }

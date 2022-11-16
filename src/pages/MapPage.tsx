@@ -11,13 +11,13 @@ import { WebsocketService } from "../services/websocket.service";
 function MapPage (){
   const location = useLocation();
   const sessionInformation: Session = location.state?.data;
-  
-
   //mapping data and storing in evidence variable 
 
   const evidence = sessionInformation.scene.evidences.map((evidence, index) => {
     return <Link to="/evidence" key={index} style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value={`${index} ${EvidenceType[evidence.type]}`}></input></Link>
   })
+
+  //mapping data and storing in evidence variable 
     return (
       <div className="container p-0">
         <Nav/>

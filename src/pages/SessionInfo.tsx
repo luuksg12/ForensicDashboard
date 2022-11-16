@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { json, Link, useLocation } from 'react-router-dom';
 import Nav from "./components/Nav";
+import Map from "./components/Map";
 import "../styling/SessionInfo.css"
 import { Session } from './../models/session.model'
 import { User } from './../models/user.model'
@@ -57,27 +58,30 @@ function SessionInfo() {
   );
 
   return (
-    <div className="container-fluid p-0">
-      <Nav />
-      <div className="politie"></div>
-      <div className="card container">
-        <img className="card-img-top" src="..." alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">{SessionInfo?.id}</h5>
-          <p className="card-text">{SessionInfo?.description}</p>
-        </div>
-        <ul className="list-group list-group-flush">
-          {supervisors}
-          {trainees}
-          <li className="list-group-item">Session description: {SessionInfo?.description}</li>
-          <li className="list-group-item">Scene: {SessionInfo?.scene?.name}</li>
-          <li className="list-group-item">Start tijd: {SessionInfo?.startTime}</li>
-          <li className="list-group-item">Stop tijd: {(!!SessionInfo?.stopTime) ? SessionInfo?.stopTime : 'nog niet gestopt'}</li>
-          <li className="list-group-item"><Link to="/map" state={{data: SessionInfo}} style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="zie map"></input></Link></li>
-        </ul>
-        <div className="card-body">
-          <a href="#" className="card-link">Card link</a>
-          <a href="#" className="card-link">Another link</a>
+    <div>
+      <Nav/>
+      <div className="container-fluid py-5">
+        <div className="politie"></div>
+        <div className="emptyHolder"></div>
+          <div className="card container cardHolder">
+
+            <div className="card-body">
+              <h5 className="card-title">{SessionInfo?.scene?.name}</h5>
+              <p className="info">{SessionInfo?.startTime} | Duur : {(!!SessionInfo?.stopTime) ? SessionInfo?.stopTime : 'nog niet gestopt'} | {trainees} | {supervisors}</p>
+              <p className="card-text">{SessionInfo?.description}</p>
+            </div>
+
+            <div className="row py-3">
+              <div className="col-8 ms-3 mapPlaceholder"></div>
+              <div className="col">
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+                    <Link to="/evidence" style={{ textDecoration: 'none' }}><p className="evidenceItem growSmall">Blood</p></Link>
+              </div>
+          </div>
         </div>
       </div>
     </div>
