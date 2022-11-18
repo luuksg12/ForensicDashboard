@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  min-height:100%;
 }
 
 .App-logo {
@@ -13,9 +13,7 @@
   }
 }
 
-.App-header {
-  background-color: #070528;
-  min-height: 100vh;
+.App-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,3 +38,29 @@
   transform: scale(1.02); 
 }
 
+body, html {
+  width: 100%;
+  padding: 0;
+}
+.image{
+  background-image: url(img/backgroundplaceholder.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  height: auto;
+}
+
+main {
+  flex: 1;
+}

@@ -1,41 +1,15 @@
-.main{
-    height: 90vh;
-    width: 100vw;
-    padding: 0;
-    background-image: url(../img/backgroundplaceholder.png);
-    background-position-x: center;
+table td,
+table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
-.bottombar{
-    display: flex; 
-    flex-direction: row;
-    width: 100%;
-    padding: 0;
-}
-.input-background{
-    background-color: #CBCBCBE6 !important;
-    border-radius: 20px;
-}
-.sessionHolder{
-    background-color: #CBCBCBE6 !important;
-    border-radius: 20px;
-    width: 25vw;
-}
-.session{
-    color: #000;
-}
-.logo{
-    margin:20px;
-    background-color: beige;
-}
-.logotext{
-    color: grey;
-}
-.SessionItem:hover{
-    color:#000;
-    background-color: #e9e9e9 !important;
-    border-radius: 20px;
-    cursor: 'pointer';
-}
-.SessionLink{
-    color: #000;
+
+.mask-custom {
+    background: rgba(24, 24, 16, .2);
+    border-radius: 2em;
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
 }

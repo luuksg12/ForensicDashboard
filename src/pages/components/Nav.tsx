@@ -1,25 +1,44 @@
-import React, {useState} from "react";
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState} from "react";
 import "../../styling/Nav.css"
+import {useLocation} from "react-router-dom";
 
-function Nav (){
 
+
+function Nav(): JSX.Element{
+    
+    const location = useLocation();
+    useEffect(() => {
+    }, [location]);
+    
+    if (location.pathname != "/") {
+        return (
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a className="navbar-brand">
+                <div className="politie"></div>
+            </a>
+            <ul className="navbar-nav mr-auto d-flex w-100">
+                <li className="nav-item active">
+                    <a className="nav-link" href="/Sessions">
+                        <i className="fa fa-vr-cardboard nav-icon" aria-hidden="true"/>
+                        Sessies
+                    </a>
+                </li>
+                <div className="flex-grow-1" />
+                <li className="nav-item">
+                    <a className="nav-link" href="/">
+                        <i className="fa fa-sign-out nav-icon" aria-hidden="true"/>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        );
+    }
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container">
-                <div className="collapse navbar-collapse container justify-content-between" id="navbarNavAltMarkup">
-                    <div className="navbar-nav navpad">
-                        <Link to="/Sessions" className="Navlink grow"><p>Sessies</p></Link>
-                        <Link to="/Sessioninfo" className="Navlink grow"><p>Informatie</p></Link>
-                    </div>
-                    <div className="navbar-nav logout">
-                        <Link to="/" className="Navlink grow"><i className="fa fa-sign-out" aria-hidden="true"></i></Link>
-                    </div>
-                </div>
-            </div>
+            <a className="navbar-brand">
+                <div className="politie"></div>
+            </a>
         </nav>
-
-    )
+    );
   }
-
 export default Nav;

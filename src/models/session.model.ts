@@ -4,10 +4,10 @@ import { SceneModel } from "./scene.model"
 export class SessionModel{
     id: string = ""
     description?: string = ""
-    superVisor?: string = ""
+    participants? : Participant[]
     events?: Array<EventModel> = new Array<EventModel>()
-    date: Date = new Date()
-    duration?: Date = new Date()
+    startTime: Date = new Date()
+    stopTime?: Date = new Date()
     scene?: SceneModel
 }
 
@@ -22,9 +22,17 @@ export interface Session {
     scene: Scene
     events: any[]
   }
-  
-  export interface Participant {
+
+interface User {
+    firstname?: string,
+    lastname?: string,
+    role?: number,
+    addition?: string
+}
+
+export interface Participant {
     userId: string
+    user: User
   }
   
   export interface Scene {

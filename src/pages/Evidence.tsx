@@ -9,8 +9,6 @@ function Evidence (){
     return (
       
         <div className="container p-0">
-          <Nav/>
-          <div className="politie"></div>
             <div className="row-9 d-flex align-items-center justify-content-center mainHolder p-3">
                   <div className="col-8 map">evidence photo here</div>
                   <div className="col">

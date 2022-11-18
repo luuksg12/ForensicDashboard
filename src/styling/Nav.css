@@ -1,19 +1,13 @@
-.navbar{
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    height: 10vh;
-    width: 100vw;
-    text-align: center;
-    display:inline-block !important;
-    float: none;
-    vertical-align: top;
-    background-color: #3131317a !important;
-}
-.Navlink{
-    color: #eeeeee !important;
+
+
+.nav-link{
+    display: flex;
+    align-items: center;
     text-decoration: none;
     font-weight:600;
     padding-right: 2rem;
     padding-top: 1rem;
+}
+.nav-icon{
+    margin-right: 10px;
 }

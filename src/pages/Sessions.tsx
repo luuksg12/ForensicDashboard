@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
-import { SessionModel } from "../models/session.model";
+import {Link, NavigateOptions, useNavigate} from 'react-router-dom';
+import {Participant, SessionModel} from "../models/session.model";
 import { SessionQuery } from "../querys/SessionQuery";
-import Nav from "./components/Nav";
 import "../styling/Sessions.css";
-import SessionInfo from "./SessionInfo";
+import { format } from 'date-fns'
 import {websocketService} from "../services/singeltons";
+import IsLiveBadge from "./components/IsLiveBadge";
 
 function Sessions() {
   const [selectedItem, setSelectedItem] = useState({id:"none"})
   const [webSock, setWebSock] = useState(websocketService)
-  const [logoList, setlogoList] = useState(
-    //placeholder data
-    [
-      { id: "1", name: "Logo" },
-      { id: "2", name: "Logo" },
-    ]
-  )
+  let navigate = useNavigate();
 
+  function HandleOnClick(id: string) {
+    navigate("/SessionInfo", {state: {data :id}} );
+    console.log(id);
+  }
+  
   const listOfSessions: SessionModel[] = [
     {
       id: "",
       description: "",
-      superVisor: "",
+      participants: [],
       events: [],
-      date: new Date(),
-      duration: new Date(),
+      startTime: new Date(),
+      stopTime: new Date(),
     }
   ];
 
@@ -33,26 +32,52 @@ function Sessions() {
     listOfSessions
   )
 
-  // const [theArray, setTheArray] = useState(friendsArray);
-
+  
   const sessions = SessionList.map((item, index) => {
+    let startTime = new Date(item.startTime).toDateString();
+    let stopTime = "-";
+    if(item.stopTime != undefined){
+      stopTime = new Date(item.stopTime).toDateString();
+    }
+    let isLive = item.stopTime == undefined;
+   
+
     return (
-      <li className={"SessionItem"} key={index} onClick={() => handleSelection(item, index)} style={{ cursor: 'pointer' }}>
-        <div className="SessionLink grow">{item.description}</div>
-      </li>
-    )
-  }
-    
-  );
-
-  const logos = logoList.map((value) =>
-    <div className="col-1 logo grow" key={value.id}>
-      <div className="logotext">{value.name}</div>
-    </div>
-  );
-
-
-
+        <tr key={item.id} onClick={() => HandleOnClick(item.id)}>
+          <td>
+            <IsLiveBadge IsLive={isLive}/>
+          </td>
+          <td>
+            <div className="d-flex align-items-center">
+              <div className="ms-3">
+                <p className="fw-bold mb-1">{item.description}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p className="fw-normal mb-1">{startTime}</p>
+            <p className="fw-normal">{stopTime}</p>
+          </td>
+          <td>
+            {item.participants?.map((participant,index)=>{
+              if(participant.user.role == 0)
+            return (
+                <div key={participant.userId}>{participant.user.firstname}</div>
+            )
+          })}
+          </td>
+          <td>
+            {item.participants?.map((participant,index)=>{
+              if(participant.user.role == 1)
+                return (
+                    <div key={participant.userId}>{participant.user.firstname}</div>
+                )
+            })}
+          </td>
+        </tr>
+      )
+  });
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -61,35 +86,37 @@ function Sessions() {
     var fetchedSessions = await SessionQuery.GetSessions()
     setSessionList(fetchedSessions)
   }
-
-
-  function handleSelection(e: any, index: number) {
-    
-    var setActive = Array.from(document.getElementsByClassName('session'))
-    for (let item of setActive) {
-      item.classList.remove('selected')
-    }
-    setActive[index].classList.toggle('selected')
-    setSelectedItem(e)
-  }
+  
   //mapping data and storing in evidence variable 
   return (
-    <div className="container-fluid p-0">
-      <Nav />
-      <div className="politie"></div>
-      <div className="row-9 main d-flex align-items-center justify-content-center">
-        <div className="d-flex flex-column sessionHolder">
-          <ul onChange={(e) => handleSelection} style={{ listStyle: 'none', padding: 0 }}>
-            {sessions}
-          </ul>
-          <Link to="/sessionInfo" state={{data: selectedItem.id}} style={{ textDecoration: 'none' }}><input className="input-background form-control form-control-lg" type="submit" value="Selecteer"></input></Link>
-          
+    <div className="d-flex align-content-center justify-content-center h-100">
+      <div className="container pt-5">
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <div className="card mask-custom">
+              <div className="card-body">
+                <div className="table-responsive">
+                  <table id="sessions" className="table table-borderless text-white mb-0 table-hover">
+                    <thead>
+                    <tr> 
+                      <th>Status</th>
+                      <th>Beschrijving</th>
+                      <th>Datum</th>
+                      <th>Trainees</th>
+                      <th>Supervisor</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {sessions}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
-      <div className="bottombar row-3 container">
-        {logos}
-      </div>
-    </div>
   )
 }
 

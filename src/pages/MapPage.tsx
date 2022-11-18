@@ -20,8 +20,6 @@ function MapPage (){
   //mapping data and storing in evidence variable 
     return (
       <div className="container p-0">
-        <Nav/>
-        <div className="politie"></div>
           <div className="row-9 d-flex align-items-center justify-content-center mainHolder p-3">
                 <div className="col-8 map"><Map session={sessionInformation}/></div>
                 <div className="col">

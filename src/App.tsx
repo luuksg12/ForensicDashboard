@@ -1,29 +1,44 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link, Routes} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link,
+    RouteMatch,
+    useParams, useLocation
+} from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
+import Nav from "./pages/components/Nav";
 import Evidence from "./pages/Evidence";
 import Login from './pages/Login';
 import MapPage from "./pages/MapPage";
 import SessionInfo from "./pages/SessionInfo";
 import Sessions from './pages/Sessions';
+import Footer from "./pages/components/Footer";
+import Map from "./pages/components/Map";
 
 function App() {
-  return (
-    <div className="App">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-      <div className="App-header">
-        <Router>
-          <Routes>
-            <Route path="/" element={<Login/>} />
-            <Route path="sessions" element={<Sessions />} />
-            <Route path="sessionInfo" element={<SessionInfo />} />
-            <Route path="map" element={<MapPage />} />
-            <Route path="evidence" element={<Evidence />} />
-          </Routes>
-        </Router>
+    
+    return (
+      <div className="wrapper">
+              <Router>
+                  <header>
+                      <Nav/>
+                  </header>
+                  <main className="image">
+                      <Routes>
+                          <Route path="/" element={<Login/>}/>
+                          <Route path="/Sessions" element={<Sessions/>}/>
+                          <Route path="/SessionInfo" element={<SessionInfo/>}/>
+                      </Routes>
+                  </main>
+              </Router>
+          <footer>
+              <Footer/>
+          </footer>
       </div>
-    </div>
   );
 }
 

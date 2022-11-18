@@ -1,15 +1,14 @@
-.main{
-    height: 90vh;
-    width: 100vw;
-    padding: 0;
-    background-image: url(../img/backgroundplaceholder.png);
-    background-position-x: center;
-}
 .bottombar{
-    display: flex; 
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height:100px;
     flex-direction: row;
     width: 100%;
     padding: 0;
+    background-color: #3131317a !important;
 }
 .input-background{
     background-color: #CBCBCBE6 !important;
@@ -22,13 +21,17 @@
 .logotext{
     color: grey;
 }
+.TNO-logo{
+    background-image: url(../img/logo-tno.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100px;
+    height: 50px;
+}
 .politie{
-    position: absolute;
     background-image: url(../img/politielogo.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    left: 2vw;
-    top: 2vh;
-    width: 6.5vw;
-    height: 13vh;
+    width: 50px;
+    height: 50px;
 }

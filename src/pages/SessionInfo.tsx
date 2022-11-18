@@ -59,9 +59,7 @@ function SessionInfo() {
 
   return (
     <div>
-      <Nav/>
       <div className="container-fluid py-5">
-        <div className="politie"></div>
         <div className="emptyHolder"></div>
           <div className="card container cardHolder">
 
