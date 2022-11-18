@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "../../styling/Nav.css"
 import {useLocation} from "react-router-dom";
+import PolitieLogo from '../../img/logo-politie.svg';
 
 
 
@@ -14,7 +15,7 @@ function Nav(): JSX.Element{
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand">
-                <div className="politie"></div>
+                <img src={PolitieLogo}/>
             </a>
             <ul className="navbar-nav mr-auto d-flex w-100">
                 <li className="nav-item active">
@@ -36,7 +37,7 @@ function Nav(): JSX.Element{
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand">
-                <div className="politie"></div>
+                <img src={PolitieLogo}/>
             </a>
         </nav>
     );
