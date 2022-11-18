@@ -21,7 +21,7 @@ export interface Session {
     sceneId: string
     participants: Participant[]
     scene: Scene
-    events: any[]
+    events: EventModel[]
   }
 
 interface User {

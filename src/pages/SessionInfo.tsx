@@ -8,6 +8,7 @@ import IsLiveBadge from "./components/IsLiveBadge";
 import {Accordion, AccordionDetails, AccordionSummary, Box, Tab, Tabs, Typography} from "@mui/material";
 import {ExpandMore} from "@mui/icons-material";
 import {EvidenceType} from "../models/evidence.model";
+import {EventType} from "../models/event.model";
 
 
 function SessionInfo(): JSX.Element {
@@ -75,11 +76,18 @@ function SessionInfo(): JSX.Element {
   );
   
   const evidences = SessionInfo?.scene.evidences.map((evidence, index)=>
-
       <tr key={index}>
         <td>{index}</td>
         <td>
           {EvidenceType[evidence.type]}
+        </td>
+      </tr>
+  );
+  const events = SessionInfo?.events.map((event, index)=>
+      <tr key={index}>
+        <td>{index}</td>
+        <td>
+          {EventType[event.type]}
         </td>
       </tr>
   );
@@ -169,7 +177,6 @@ if(SessionInfo != undefined){
                         </Tabs>
                       </Box>
                       <TabPanel value={value} index={0}>
-                        <div className="col">
                           <table id="evidences" className="table table-sm table-borderless text-white mb-0">
                             <thead>
                             <tr>
@@ -181,10 +188,19 @@ if(SessionInfo != undefined){
                               {evidences}
                             </tbody>
                           </table>
-                        </div>
                       </TabPanel>
                       <TabPanel value={value} index={1}>
-                        Item Two
+                        <table id="events" className="table table-sm table-borderless text-white mb-0">
+                          <thead>
+                          <tr>
+                            <th>Nr.</th>
+                            <th>Type</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {events}
+                          </tbody>
+                        </table>
                       </TabPanel>
                       <TabPanel value={value} index={2}>
                         Item Three
