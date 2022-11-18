@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styling/Map.css"
+import map from '../../img/59b92ceb-a958-4a3a-b465-78f91dbab157.jpg';
 import { Session } from './../../models/session.model'
 import { EvidenceType } from "./../../models/evidence.model"
 import MapEvidences from "./MapEvidences";
@@ -28,7 +29,7 @@ export function Map(props: SessionProp) {
     <div className="container">
       <div className="row">
         <div className="col map p-0">
-          <img src={`http://145.24.222.175/simulation/map?id=${session.scene.id}`} style={{ width: '100%', height: '100%' }}></img>
+          <img src={map} style={{ width: '100%', height: '100%' }}></img>
           <MapEvidences session={session}/>
         </div>
       </div>

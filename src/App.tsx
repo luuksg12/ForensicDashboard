@@ -32,6 +32,7 @@ function App() {
                           <Route path="/" element={<Login/>}/>
                           <Route path="/Sessions" element={<Sessions/>}/>
                           <Route path="/SessionInfo" element={<SessionInfo/>}/>
+                          <Route path="/Evidence" element={<Evidence/>}/>
                       </Routes>
                   </main>
               </Router>

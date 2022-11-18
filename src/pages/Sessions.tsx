@@ -115,8 +115,8 @@ function Sessions() {
             </div>
           </div>
         </div>
-        </div>
       </div>
+    </div>
   )
 }
 

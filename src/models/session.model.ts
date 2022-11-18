@@ -1,5 +1,6 @@
 import { EventModel } from "./event.model"
 import { SceneModel } from "./scene.model"
+import {EvidenceType} from "./evidence.model";
 
 export class SessionModel{
     id: string = ""
@@ -50,6 +51,6 @@ export interface Participant {
     x: number
     y: number
     z: number
-    type: number
+    type: EvidenceType
   }
   
