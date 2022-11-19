@@ -29,7 +29,7 @@ export function MapEvidences(props: SessionProp) {
         <>
             {evidenceList.map((value, index) => {
                 let found = "false";
-                if (events.filter(event => event.id === value.id).length != 0) {
+                if (events.filter(event => event.evidenceId === value.id).length != 0) {
                     found = "true";
                 }
                 return <div key={value.id} className={"evidence " + found} style={{ left: `${translatedZvalue(value.z)}%`, top: `${translatedXvalue(value.x)}%` }}>{index}</div>

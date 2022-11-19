@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { json, Link, useLocation } from 'react-router-dom';
 import Map from "./components/Map";
 import "../styling/SessionInfo.css"
-import { Session } from './../models/session.model'
+import {Evidence, Session} from './../models/session.model'
 import { User } from './../models/user.model'
 import IsLiveBadge from "./components/IsLiveBadge";
 import {Accordion, AccordionDetails, AccordionSummary, Box, Tab, Tabs, Typography} from "@mui/material";
 import {ExpandMore} from "@mui/icons-material";
 import {EvidenceType} from "../models/evidence.model";
-import {EventType} from "../models/event.model";
+import {EventType, FilterType, LightType} from "../models/event.model";
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 
 
 function SessionInfo(): JSX.Element {
@@ -18,6 +25,7 @@ function SessionInfo(): JSX.Element {
   const [SessionInfo, setSessionInfo] = useState<Session>()
   const [Supervisors, setSupervisors] = useState<User[]>([])
   const [Trainees, setTrainees] = useState<User[]>([])
+  const [evidenceList,setEvidenceList] = useState<Evidence[]>()
 
   const SUPERVISOR = 1
   const TRAINEE = 0
@@ -30,6 +38,7 @@ function SessionInfo(): JSX.Element {
         )
       ).json();
       await setSessionInfo(data);
+      await setEvidenceList(data.scene?.evidences ?? []);
     };
 
     dataFetch();
@@ -84,12 +93,28 @@ function SessionInfo(): JSX.Element {
       </tr>
   );
   const events = SessionInfo?.events.map((event, index)=>
-      <tr key={index}>
-        <td>{index}</td>
-        <td>
-          {EventType[event.type]}
-        </td>
-      </tr>
+      <TimelineItem key={index}>
+        <TimelineSeparator>
+          <TimelineDot variant="outlined">
+            <div style={{height: "20px", width: '20px',display: 'flex',alignItems: 'center',justifyContent:'center'}} className="text-white">
+              {index}
+            </div>
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{ py: '12px', px: 2 }} className="text-white">
+          <Typography variant="h6" className="d-flex align-items-center">
+            {EventType[event.action]}
+            <Typography className="ms-1 text-secondary">[{new Date(event.timeStamp).getHours()}:{new Date(event.timeStamp).getMinutes()}:{new Date(event.timeStamp).getSeconds()}]</Typography>
+          </Typography>
+          <Typography>Bewijsstuk: {evidenceList?.indexOf(evidenceList?.filter(
+              function (e) {
+                return e.id == event.evidenceId
+              })[0])}</Typography>
+          <Typography>Filter: {FilterType[event.filter]}</Typography>
+          <Typography>Licht: {LightType[event.light]}</Typography>
+        </TimelineContent>
+      </TimelineItem>
   );
   
   interface TabPanelProps {
@@ -164,19 +189,20 @@ if(SessionInfo != undefined){
               <div className="card mask-custom p-5 ">
                 <div className="d-flex align-items-center">
                   <div className="row">
-                    <div className="col-8">
+                    <div className="col-7">
                       <h3 className="text-white ">Kaart</h3>
                       <Map session={SessionInfo}/>
                     </div>
-                    <div className="col-4">
+                    <div className="col-5">
                       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <Tabs value={value} onChange={handleChange} className="text-white" textColor="inherit">
+                        <Tabs value={value} onChange={handleChange} className="text-white" textColor="inherit" >
                           <Tab label="Bewijsstukken"/>
                           <Tab label="Events"/>
                           <Tab label="Logs"/>
                         </Tabs>
                       </Box>
-                      <TabPanel value={value} index={0}>
+                      <TabPanel value={value} index={0} >
+                        <div style={{height: 500,overflow:'auto'}}>
                           <table id="evidences" className="table table-sm table-borderless text-white mb-0">
                             <thead>
                             <tr>
@@ -188,22 +214,18 @@ if(SessionInfo != undefined){
                               {evidences}
                             </tbody>
                           </table>
+                        </div>
                       </TabPanel>
                       <TabPanel value={value} index={1}>
-                        <table id="events" className="table table-sm table-borderless text-white mb-0">
-                          <thead>
-                          <tr>
-                            <th>Nr.</th>
-                            <th>Type</th>
-                          </tr>
-                          </thead>
-                          <tbody>
+                        <Timeline sx={{[`& .${timelineItemClasses.root}:before`]:{
+                            flex: 0,
+                            padding: 0,
+                          },
+                        }}>
                           {events}
-                          </tbody>
-                        </table>
+                        </Timeline>
                       </TabPanel>
                       <TabPanel value={value} index={2}>
-                        Item Three
                       </TabPanel>
                     </div>
                   </div>

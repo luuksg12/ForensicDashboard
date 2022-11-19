@@ -1,18 +1,28 @@
-import { EventModel } from "./event.model"
+import {EventModel, EventType, FilterType, LightType} from "./event.model"
 import { SceneModel } from "./scene.model"
-import {EvidenceType} from "./evidence.model";
+import {EvidenceModel, EvidenceType} from "./evidence.model";
+import {UserModel} from "./user.model";
 
 export class SessionModel{
     id: string = ""
     description?: string = ""
-    participants? : Participant[]
-    events?: Array<EventModel> = new Array<EventModel>()
+    participants? : Participant[] = []
+    events?: Event[] = []
     startTime: Date = new Date()
     stopTime?: Date = new Date()
     scene?: SceneModel
 }
 
-
+export interface Event{
+    id: string
+    action: EventType
+    timeStamp: Date
+    userId: string
+    sessionId: string
+    evidenceId: string
+    filter: FilterType
+    light: LightType
+}
 export interface Session {
     id: string
     description: string
@@ -21,7 +31,7 @@ export interface Session {
     sceneId: string
     participants: Participant[]
     scene: Scene
-    events: EventModel[]
+    events: Event[]
   }
 
 interface User {
