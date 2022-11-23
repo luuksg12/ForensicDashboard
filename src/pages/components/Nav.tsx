@@ -14,7 +14,7 @@ function Nav(): JSX.Element{
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand">
-                <div className="politie"></div>
+                <div className="politie m-2"></div>
             </a>
             <ul className="navbar-nav mr-auto d-flex w-100">
                 <li className="nav-item active">
@@ -36,7 +36,7 @@ function Nav(): JSX.Element{
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand">
-                <div className="politie"></div>
+                <div className="politie m-2"></div>
             </a>
         </nav>
     );
