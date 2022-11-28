@@ -110,9 +110,6 @@ function Sessions() {
                     {sessions}
                     </tbody>
                   </table>
-                  <Link to="/CreateSession" style={{ textDecoration: 'none', background: '-webkit-linear-gradient(right,#21d4fd,#b721ff,#21d4fd,#b721ff)' }}>
-                    <input className="border-0 text-white form-control form-control-lg mt-3 fw-bold  growSmall"  type="submit" value="Sessie Aanmaken" style={{background: '-webkit-linear-gradient(left,#21d4fd,#b721ff)', width: 'auto' }}/>
-                  </Link>
                 </div>
               </div>
             </div>
