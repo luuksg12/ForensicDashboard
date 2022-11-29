@@ -11,7 +11,7 @@ function Nav(): JSX.Element{
     useEffect(() => {
     }, [location]);
     
-    if (location.pathname != "/") {
+    if (location.pathname !== "/" && location.pathname !== "/create") {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand">

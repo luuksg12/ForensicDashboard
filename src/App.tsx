@@ -18,6 +18,7 @@ import SessionInfo from "./pages/SessionInfo";
 import Sessions from './pages/Sessions';
 import Footer from "./pages/components/Footer";
 import Map from "./pages/components/Map";
+import Create from "./pages/Create";
 
 function App() {
     
@@ -30,6 +31,7 @@ function App() {
                   <main className="image">
                       <Routes>
                           <Route path="/" element={<Login/>}/>
+                          <Route path="/Create" element={<Create/>}/>
                           <Route path="/Sessions" element={<Sessions/>}/>
                           <Route path="/SessionInfo" element={<SessionInfo/>}/>
                           <Route path="/Evidence" element={<Evidence/>}/>

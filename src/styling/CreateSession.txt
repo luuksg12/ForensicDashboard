@@ -1,0 +1,9 @@
+.dropdown-menu{
+    width:auto;
+    height:auto;
+    background-color: #F8F9FA;
+}
+ul {
+    list-style-type: none;
+}
+li { cursor: pointer; }
