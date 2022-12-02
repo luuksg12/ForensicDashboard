@@ -6,6 +6,9 @@ import "../styling/Sessions.css";
 import { format } from 'date-fns'
 import {websocketService} from "../services/singeltons";
 import IsLiveBadge from "./components/IsLiveBadge";
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
+import {Add} from "@mui/icons-material";
 
 function Sessions() {
   const [selectedItem, setSelectedItem] = useState({id:"none"})
@@ -15,6 +18,9 @@ function Sessions() {
   function HandleOnClick(id: string) {
     navigate("/SessionInfo", {state: {data :id}} );
     console.log(id);
+  }
+  function HandleOnAdd(){
+    navigate("/CreateSession");
   }
   
   const listOfSessions: SessionModel[] = [
@@ -94,6 +100,11 @@ function Sessions() {
         <div className="row justify-content-center">
           <div className="col-12">
             <div className="card mask-custom">
+              <div className="card-header d-flex justify-content-end">
+                <IconButton aria-label="Add" size="large" onClick={HandleOnAdd} className="grow">
+                  <AddIcon fontSize="inherit" className="text-white"/>
+                </IconButton>
+              </div>
               <div className="card-body">
                 <div className="table-responsive">
                   <table id="sessions" className="table table-borderless text-white mb-0 table-hover">
@@ -115,8 +126,8 @@ function Sessions() {
             </div>
           </div>
         </div>
-        </div>
       </div>
+    </div>
   )
 }
 

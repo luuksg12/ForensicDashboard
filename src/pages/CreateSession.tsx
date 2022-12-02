@@ -106,7 +106,7 @@ function CreateSession (){
                         Deelnemer 1: {Player1Selected} <br/>
                         Deelnemer 2: {Player2Selected} <br/>
 
-                        <Link to="/Sessioninfo" style={{ textDecoration: 'none', background: '-webkit-linear-gradient(right,#21d4fd,#b721ff,#21d4fd,#b721ff)' }}>
+                        <Link to="/SessionInfo" style={{ textDecoration: 'none'}}>
                              <input className="border-0 text-white form-control form-control-lg mt-3 fw-bold growSmall"  type="submit" value="Sessie Aanmaken" style={{background: '-webkit-linear-gradient(left,#21d4fd,#b721ff)' }}/>
                         </Link>
                 </div>

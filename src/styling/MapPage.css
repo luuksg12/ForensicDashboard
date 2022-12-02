@@ -3,8 +3,8 @@
     border-radius: 1rem;
 }
 .map{
+    height: 100%;
     position: relative;
-    height: 60vh;
     width: 100%;
     background-color: antiquewhite;
     border: solid #000 2px;

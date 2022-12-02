@@ -19,6 +19,7 @@ import Sessions from './pages/Sessions';
 import Footer from "./pages/components/Footer";
 import Map from "./pages/components/Map";
 import Create from "./pages/Create";
+import CreateSession from "./pages/CreateSession";
 
 function App() {
     
@@ -34,6 +35,8 @@ function App() {
                           <Route path="/Create" element={<Create/>}/>
                           <Route path="/Sessions" element={<Sessions/>}/>
                           <Route path="/SessionInfo" element={<SessionInfo/>}/>
+                          <Route path="/Evidence" element={<Evidence/>}/>
+                          <Route path="/CreateSession" element={<CreateSession/>}/>
                       </Routes>
                   </main>
               </Router>

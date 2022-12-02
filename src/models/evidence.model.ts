@@ -6,7 +6,7 @@ export class EvidenceModel{
     x: number = 0
     y: number = 0
     z: number = 0
-    type: string = ""
+    type: EvidenceType = EvidenceType.Gunpowder
     discovered: boolean = false
     scene: SceneModel = new SceneModel()
     scene_id: string = ""
