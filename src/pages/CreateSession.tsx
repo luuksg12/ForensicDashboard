@@ -34,8 +34,8 @@ function CreateSession (){
     return (
       <div>
         <div className="container-fluid py-5">
-          <div className="emptyHolder"></div>
-            <div className="card container cardHolder">
+          <div className="row justify-content-center"></div>
+            <div className="card container mask-custom text-white">
   
               <div className="card-body">
                 <div className="row">
@@ -99,7 +99,7 @@ function CreateSession (){
               </div>
   
               <div className="row py-3">
-                <div className="col-8 ms-3 mapPlaceholder"></div>
+                <div className="col-8 ms-3 mapPlaceholder text-black">{MapSelected}</div>
                 <div className="col font-weight-bold">
                         Map: {MapSelected} <br/>
                         Supervisor: {SupervisorSelected} <br/>

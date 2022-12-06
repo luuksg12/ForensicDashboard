@@ -83,15 +83,26 @@ function SessionInfo(): JSX.Element {
         </td>
       </tr>
   );
-  
-  const evidences = SessionInfo?.scene.evidences.map((evidence, index)=>
-      <tr key={index}>
-        <td>{index}</td>
-        <td>
-          {EvidenceType[evidence.type]}
-        </td>
-      </tr>
-  );
+
+  // const evidences = SessionInfo?.scene.evidences.map((evidence, index)=>
+  // <tr key={index}>
+  //   <td>{index}</td>
+  //   <td>
+  //     {EvidenceType[evidence.type]}
+  //   </td>
+  // </tr>
+  // );
+
+  const evidences =(
+    <tr key={1}>
+      <td>{1}</td>
+      <td>
+        evidence
+      </td>
+    </tr>);
+
+
+
   const events = SessionInfo?.events.map((event, index)=>
       <TimelineItem key={index}>
         <TimelineSeparator>
