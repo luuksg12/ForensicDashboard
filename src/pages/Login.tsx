@@ -30,7 +30,11 @@ function Login() {
         await fetch('http://localhost:8010/proxy/simulation/user/login', requestOptions)
       );
       if(data.status === 201){
-        navigate("/sessions");
+        
+        navigate("/sessions", {state:await data.json()});
+
+        // TODO:
+        // Pass props to /sessions and process sessions attached to user.
         return;
       }
       alert("Invalid login credentials..")

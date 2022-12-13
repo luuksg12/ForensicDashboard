@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link, NavigateOptions, useNavigate} from 'react-router-dom';
+import {Link, NavigateOptions, useNavigate, useLocation} from 'react-router-dom';
 import {Participant, SessionModel} from "../models/session.model";
 import { SessionQuery } from "../querys/SessionQuery";
 import "../styling/Sessions.css";
@@ -11,10 +11,13 @@ import AddIcon from '@mui/icons-material/Add';
 import {Add} from "@mui/icons-material";
 
 function Sessions() {
+  
   const [selectedItem, setSelectedItem] = useState({id:"none"})
   const [webSock, setWebSock] = useState(websocketService)
   let navigate = useNavigate();
-
+  const location = useLocation();
+  const loggedInUser = location.state;
+  console.log(loggedInUser);
   function HandleOnClick(id: string) {
     navigate("/SessionInfo", {state: {data :id}} );
     console.log(id);
@@ -92,7 +95,7 @@ function Sessions() {
     var fetchedSessions = await SessionQuery.GetSessions()
     setSessionList(fetchedSessions)
   }
-  
+
   //mapping data and storing in evidence variable 
   return (
     <div className="d-flex align-content-center justify-content-center h-100">
