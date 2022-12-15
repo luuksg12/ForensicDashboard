@@ -12,4 +12,4 @@ function IsLiveBadge(props : IBadge){
         </span>);
     }
     return(<span className="badge badge-pill badge-primary bg-primary rounded-pill d-inline">Afgelopen</span>);
-}export default IsLiveBadge
+} export default IsLiveBadge
