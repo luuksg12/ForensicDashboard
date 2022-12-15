@@ -23,6 +23,7 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1",
     "rxjs": "^7.5.7",
+    "validator": "^13.7.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -32,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy":"http://145.24.222.175:80",
+  "proxy": "http://145.24.222.175:80",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -50,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/validator": "^13.7.10"
   }
 }

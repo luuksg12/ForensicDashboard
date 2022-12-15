@@ -1,4 +1,5 @@
-import {EventModel, EventType, FilterType, LightType} from "./event.model"
+import { ActionType, FilterType, LightType} from "./enums"
+import { EventModel } from "./event.model";
 import { SceneModel } from "./scene.model"
 import {EvidenceModel, EvidenceType} from "./evidence.model";
 import {UserModel} from "./user.model";
@@ -15,7 +16,7 @@ export class SessionModel{
 
 export interface Event{
     id: string
-    action: EventType
+    action: ActionType
     timeStamp: Date
     userId: string
     sessionId: string

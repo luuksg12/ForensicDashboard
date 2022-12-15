@@ -8,7 +8,7 @@ import IsLiveBadge from "./components/IsLiveBadge";
 import {Accordion, AccordionDetails, AccordionSummary, Box, Tab, Tabs, Typography} from "@mui/material";
 import {ExpandMore} from "@mui/icons-material";
 import {EvidenceType} from "../models/evidence.model";
-import {EventType, FilterType, LightType} from "../models/event.model";
+import {ActionType, FilterType, LightType} from "../models/enums";
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -84,15 +84,6 @@ function SessionInfo(): JSX.Element {
       </tr>
   );
 
-  // const evidences = SessionInfo?.scene.evidences.map((evidence, index)=>
-  // <tr key={index}>
-  //   <td>{index}</td>
-  //   <td>
-  //     {EvidenceType[evidence.type]}
-  //   </td>
-  // </tr>
-  // );
-
   const evidences =(
     <tr key={1}>
       <td>{1}</td>
@@ -100,7 +91,6 @@ function SessionInfo(): JSX.Element {
         evidence
       </td>
     </tr>);
-
 
 
   const events = SessionInfo?.events.map((event, index)=>
@@ -115,7 +105,7 @@ function SessionInfo(): JSX.Element {
         </TimelineSeparator>
         <TimelineContent sx={{ py: '12px', px: 2 }} className="text-white">
           <Typography variant="h6" className="d-flex align-items-center">
-            {EventType[event.action]}
+            {ActionType[event.action]}
             <Typography className="ms-1 text-secondary">[{new Date(event.timeStamp).getHours()}:{new Date(event.timeStamp).getMinutes()}:{new Date(event.timeStamp).getSeconds()}]</Typography>
           </Typography>
           <Typography>Bewijsstuk: {evidenceList?.indexOf(evidenceList?.filter(
