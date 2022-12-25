@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
-import { json, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Map from "./components/Map";
-import Nav from "./components/Nav";
 import "../styling/MapPage.css"
 import { Session } from "../models/session.model";
-import { EvidenceType } from "../models/evidence.model"
-import { WebsocketService } from "../services/websocket.service";
+import { EvidenceType } from "../models/enums"
 
 function MapPage (){
   const location = useLocation();

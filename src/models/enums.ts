@@ -14,7 +14,7 @@ export enum ActionType {
 }
 
 export enum LightType{
-    White =0,
+    White = 0,
     Violet = 1,
     Blue = 2,
     BlueGreen = 3,

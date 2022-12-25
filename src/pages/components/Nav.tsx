@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../../styling/Nav.css"
 import { useLocation } from "react-router-dom";
 import { LOGO_POLITIE } from "../../img/all";
-// import PolitieLogo from '../../img/logo-politie.png';
-
-
 
 function Nav(): JSX.Element {
 

@@ -1,67 +1,52 @@
-import { ActionType, FilterType, LightType} from "./enums"
-import { EventModel } from "./event.model";
-import { SceneModel } from "./scene.model"
-import {EvidenceModel, EvidenceType} from "./evidence.model";
-import {UserModel} from "./user.model";
+import { ActionType, FilterType, LightType } from "./enums";
 
-export class SessionModel{
-    id: string = ""
-    description?: string = ""
-    participants? : Participant[] = []
-    events?: Event[] = []
-    startTime: Date = new Date()
-    stopTime?: Date = new Date()
-    scene?: SceneModel
-}
+import { EvidenceType } from "./enums";
 
-export interface Event{
-    id: string
-    action: ActionType
-    timeStamp: Date
-    userId: string
-    sessionId: string
-    evidenceId: string
-    filter: FilterType
-    light: LightType
+export interface Event {
+  id: string;
+  action: ActionType;
+  timeStamp: Date;
+  userId: string;
+  sessionId: string;
+  evidenceId: string;
+  filter: FilterType;
+  light: LightType;
 }
 export interface Session {
-    id: string
-    description: string
-    startTime: string
-    stopTime: any 
-    sceneId: string
-    participants: Participant[]
-    scene: Scene
-    events: Event[]
-  }
+  id: string;
+  description: string;
+  startTime: string;
+  stopTime: any;
+  sceneId: string;
+  participants: Participant[];
+  scene: Scene;
+  events: Event[];
+}
 
 interface User {
-    firstname?: string,
-    lastname?: string,
-    role?: number,
-    addition?: string
+  fullname: string;
+  role?: number;
 }
 
 export interface Participant {
-    userId: string
-    user: User
-  }
-  
-  export interface Scene {
-    id: string
-    name: string
-    description: string
-    mapImage: string
-    scaleX: number
-    scaleY: number
-    evidences: Evidence[]
-  }
-  
-  export interface Evidence {
-    id: string
-    x: number
-    y: number
-    z: number
-    type: EvidenceType
-  }
-  
+  userId: string;
+  user: User;
+}
+
+export interface Scene {
+  id: string;
+  name: string;
+  description: string;
+  mapImage: string;
+  scaleX: number;
+  scaleY: number;
+  evidences: Evidence[];
+}
+
+export interface Evidence {
+  id: string;
+  x: number;
+  y: number;
+  z: number;
+  type: EvidenceType;
+}

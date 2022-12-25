@@ -8,6 +8,7 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import { MAP_DEMO } from "../../img/all";
+import { HOST } from "../../Constants";
 
 interface SessionProp {
   session: Session
@@ -30,7 +31,7 @@ export function Map(props: SessionProp) {
       const dataFetch = async () => {
         const data = await (
           await fetch(
-            `http://145.24.222.175/simulation/session?sessionId=${session.id}`
+            `${HOST}/session?sessionId=${session.id}`
           )
         ).json();
         await setSession(data);

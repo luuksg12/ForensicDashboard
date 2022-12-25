@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-// import TNOLogo from '../img/logo-tno.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { LOGO_TNO } from "../img/all";
 import "../styling/Login.css"
@@ -9,15 +8,19 @@ import { authenticateLogin } from "../services/authenticate";
 function Login() {
 
   const navigate = useNavigate();
+
+  // Variables to store user input.
   const emailRef = useRef<HTMLInputElement>()
   const passwordRef = useRef<HTMLInputElement>()
+
+  // Input component configuration.
   const fieldOptions = [
     { name: "Email", reference: emailRef, type: "text" },
     { name: "Password", reference: passwordRef, type: "password" },
   ]
 
   const loginForm = fieldOptions.map((fo: { name: string, reference: any, type: string }, index) =>
-    <InputField index={index} name={fo.name} reference={fo.reference} type={fo.type} />
+    <InputField key={index} index={index} name={fo.name} reference={fo.reference} type={fo.type} />
   )
 
   return (
@@ -31,7 +34,12 @@ function Login() {
               {loginForm}
               <input onClick={async () => {
                 if (!emailRef.current?.value || !passwordRef.current?.value) return
+
+                // Checks on valid login.
                 const user = await authenticateLogin(emailRef.current?.value, passwordRef.current?.value)
+
+                // Sends user to /Sessions upon success.
+                console.log(user);
                 if (user) navigate('/Sessions', { state: user })
 
                 /* This space can be refactored into a more elegant way 

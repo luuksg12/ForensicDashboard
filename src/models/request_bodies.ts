@@ -4,11 +4,19 @@ export interface AuthenticateLogin {
 }
 
 export interface CreateUser {
-    firstname: string
-    lastname: string
-    addition: any
+    fullname: string
     email: string
     password: string
     role: string
+}
+  
+
+
+
+export interface PostSessionBody {
+    description: string
+    sceneId: string
+    ipaddr: string
+    deleted: boolean
   }
   

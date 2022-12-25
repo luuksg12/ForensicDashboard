@@ -1,6 +1,19 @@
+export enum Method {
+  GET = "GET",
+  POST = "POST",
+  PUT = "PUT",
+  DELETE = "DELETE",
+}
 export class Http {
-  static async request(method: "GET" | "POST" | "PUT" | "DELETE" = "GET", url: string = "", data = {}) {
-    const response = await fetch(url, {
+  static async request(method: Method = Method.GET, url: string = "", data = {}) {
+    if (method === Method.GET) {
+      return await fetch(url, {
+        method: method,
+        mode: "cors",
+      });
+    }
+
+    return await fetch(url, {
       method: method,
       mode: "cors",
       headers: {
@@ -8,6 +21,5 @@ export class Http {
       },
       body: JSON.stringify(data),
     });
-    return response;
   }
 }

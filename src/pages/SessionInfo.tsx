@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { json, Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Map from "./components/Map";
 import "../styling/SessionInfo.css"
 import {Evidence, Session} from './../models/session.model'
 import { User } from './../models/user.model'
 import IsLiveBadge from "./components/IsLiveBadge";
-import {Accordion, AccordionDetails, AccordionSummary, Box, Tab, Tabs, Typography} from "@mui/material";
-import {ExpandMore} from "@mui/icons-material";
-import {EvidenceType} from "../models/evidence.model";
+import { Box, Tab, Tabs, Typography } from "@mui/material";
 import {ActionType, FilterType, LightType} from "../models/enums";
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
@@ -15,7 +13,7 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+import { HOST } from "../Constants";
 
 
 function SessionInfo(): JSX.Element {
@@ -34,7 +32,7 @@ function SessionInfo(): JSX.Element {
     const dataFetch = async () => {
       const data = await (
         await fetch(
-          `http://145.24.222.175/simulation/session?sessionId=${sessionId}`
+          `${HOST}/session?sessionId=${sessionId}`
         )
       ).json();
       await setSessionInfo(data);
@@ -64,7 +62,7 @@ function SessionInfo(): JSX.Element {
 
   const trainees = Trainees.map((trainee, index) =>
       <tr key={index}>
-        <td>{trainee.firstname} {trainee.addition != undefined ? trainee.addition + " " : ""}{trainee.lastname}</td>
+        <td>{trainee.fullname}</td>
         <td>
            <span className="badge badge-pill badge bg-secondary rounded-pill d-inline">
             Trainee
@@ -75,7 +73,7 @@ function SessionInfo(): JSX.Element {
 
   const supervisors = Supervisors.map((supervisor, index) =>
       <tr key={index}>
-        <td>{supervisor.firstname} {supervisor.lastname}</td>
+        <td>{supervisor.fullname}</td>
         <td>
           <span className="badge badge-pill badge bg-primary rounded-pill d-inline">
             Supervisor

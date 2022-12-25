@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Nav from "./Nav";
 function Footer() {
 const [logoList, setlogoList] = useState(
     //placeholder data

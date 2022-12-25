@@ -1,119 +1,101 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavigateOptions, useNavigate, useLocation } from 'react-router-dom';
-import { Participant, SessionModel } from "../models/session.model";
+import { Participant, Session } from "../models/session.model";
 import "../styling/Sessions.css";
-import { format } from 'date-fns'
-import { websocketService } from "../services/singeltons";
 import IsLiveBadge from "./components/IsLiveBadge";
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
-import { Add } from "@mui/icons-material";
 import { User } from "../models/user.model";
-import { Http } from '../helper/Http';
+import { Http, Method } from '../helper/Http';
+import { HOST } from "../Constants";
+import { Button, Input } from "@mui/material";
+import DeleteBadge from "./components/DeleteBadge";
 
 function Sessions() {
 
-  const [selectedItem, setSelectedItem] = useState({ id: "none" })
-  const [webSock, setWebSock] = useState(websocketService)
-  let navigate = useNavigate();
+  let [sessions, setSessions] = useState<Session[]>([])
   const loggedInUser: User = useLocation().state;
-  console.log(loggedInUser);
-  if(!!loggedInUser) navigate('/');
+  const navigate = useNavigate();
 
-  function HandleOnClick(id: string) {
-    navigate("/SessionInfo", { state: { data: id } });
-    console.log(id);
-  }
 
-  function HandleOnAdd() {
-    navigate("/CreateSession");
-  }
 
-  const listOfSessions: SessionModel[] = [
-    {
-      id: "",
-      description: "",
-      participants: [],
-      events: [],
-      startTime: new Date(),
-      stopTime: new Date(),
+  useEffect(() => {
+    if (loggedInUser === null) navigate('/')
+    const body = {
+      userId: loggedInUser.id,
+      skip: 0,
+      take: 10
     }
-  ];
+    const fetchSessions = async () => {
+      const result = await (
+        await Http.request(Method.POST, `${HOST}/user/sessions`, body)
+      ).json()
+      setSessions(result);
+    }
+    fetchSessions();
+  }, []);
 
-  const [SessionList, setSessionList] = useState(
-    listOfSessions
-  )
 
-
-  const sessions = SessionList.map((item, index) => {
-    let startTime = new Date(item.startTime).toDateString();
+  const sessionComponents = sessions.map((session: Session) => {
+    let startTime = new Date(session.startTime).toDateString();
     let stopTime = "-";
-    if (item.stopTime != undefined) {
-      stopTime = new Date(item.stopTime).toDateString();
+    if (session.stopTime != undefined) {
+      stopTime = new Date(session.stopTime).toDateString();
     }
-    let isLive = item.stopTime == undefined;
-
-
+    let isLive = session.stopTime == undefined;
     return (
-      <tr key={item.id} onClick={() => HandleOnClick(item.id)}>
-        <td>
-          <IsLiveBadge IsLive={isLive} />
-        </td>
-        <td>
-          <div className="d-flex align-items-center">
-            <div className="ms-3">
-              <p className="fw-bold mb-1">{item.description}</p>
+      <>
+        <tr key={session.id} >
+          <td >
+            <IsLiveBadge IsLive={isLive} />
+          </td>
+          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id } })}>
+            <div className="d-flex align-items-center">
+              <p className="fw-normal mb-1">{session.description}</p>
             </div>
-          </div>
-        </td>
-        <td>
-          <p className="fw-normal mb-1">{startTime}</p>
-          <p className="fw-normal">{stopTime}</p>
-        </td>
-        <td>
-          {item.participants?.map((participant, index) => {
-            if (participant.user.role == 0)
-              return (
-                <div key={participant.userId}>{participant.user.firstname}</div>
-              )
-          })}
-        </td>
-        <td>
-          {item.participants?.map((participant, index) => {
-            if (participant.user.role == 1)
-              return (
-                <div key={participant.userId}>{participant.user.firstname}</div>
-              )
-          })}
-        </td>
-      </tr>
+          </td>
+          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id } })}>
+            <p className="fw-normal mb-1">{startTime}</p>
+            <p className="fw-normal">{stopTime}</p>
+          </td>
+          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id } })}>
+            {session.participants?.map((participant, index) => {
+              if (participant.user.role == 0)
+                return (
+                  <div key={index}>{participant.user.fullname}</div>
+                )
+            })}
+          </td>
+          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id } })}>
+            {session.participants?.map((participant, index) => {
+              if (participant.user.role == 1)
+                return (
+                  <div key={index}>{participant.user.fullname}</div>
+                )
+            })}
+          </td>
+          <td>
+            <>
+              <Button style={{ position: "relative", backgroundColor: "crimson", color: "white" }} onClick={async () => {
+                await Http.request(Method.DELETE, `${HOST}/session/delete`, { sessionId: session.id })
+                const result = await (
+                  await Http.request(Method.POST, `${HOST}/user/sessions`, {
+                    userId: loggedInUser.id,
+                    skip: 0,
+                    take: 10
+                  })
+                ).json()
+                setSessions(result);
+              }}>{"Del"}</Button>
+
+            </>
+          </td>
+        </tr>
+      </>
     )
   });
 
-  useEffect(() => {
-    fetchData();
-  }, []);
 
-  async function fetchData() {
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    };
-    const dataFetch = async () => {
-      const data = await (
-        await fetch('http://localhost:8010/proxy/simulation/session/page?userId=6275d1f9-f95c-43a3-a8fe-8c9cf91d0622&skip=0&take=5', requestOptions)
-      );
-      if (data.status === 201) {
-        console.log(await data.json());
-        setSessionList(await data.json());
-        return
-      }
-    };
-    dataFetch();
-    //setSessionList(fetchedSessions)
-  }
 
   //mapping data and storing in evidence variable 
   return (
@@ -123,7 +105,7 @@ function Sessions() {
           <div className="col-12">
             <div className="card mask-custom">
               <div className="card-header d-flex justify-content-end">
-                <IconButton aria-label="Add" size="large" onClick={HandleOnAdd} className="grow">
+                <IconButton aria-label="Add" size="large" onClick={() => navigate('/CreateSession', { state: loggedInUser })} className="grow">
                   <AddIcon fontSize="inherit" className="text-white" />
                 </IconButton>
               </div>
@@ -133,24 +115,29 @@ function Sessions() {
                     <thead>
                       <tr>
                         <th>Status</th>
-                        <th>Beschrijving</th>
-                        <th>Datum</th>
+                        <th>Description</th>
+                        <th>Date</th>
                         <th>Trainees</th>
                         <th>Supervisor</th>
+                        <th>Delete session</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {sessions}
+                      {sessionComponents}
                     </tbody>
+
                   </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
+
     </div>
   )
 }
+
 
 export default Sessions;

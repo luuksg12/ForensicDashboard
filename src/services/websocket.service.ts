@@ -1,6 +1,4 @@
 import { WebsocketBuilder, Websocket, ConstantBackoff } from "websocket-ts";
-import { IStore, store } from "./meiosis";
-import { IAppStateModel } from "./states/app-state";
 import _ from "lodash";
 import {
     AnimationListMessage,
