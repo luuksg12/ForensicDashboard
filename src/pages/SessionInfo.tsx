@@ -133,9 +133,9 @@ function SessionInfo() {
       </div>
     );
   }
-  // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-  //   setValue(newValue);
-  // };
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
 
 
   if (SessionInfo != undefined) {
@@ -186,7 +186,7 @@ function SessionInfo() {
                       </div>
                       <div className="col-5">
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                          <Tabs value={value} className="text-white" textColor="inherit" >
+                          <Tabs value={value} onChange={handleChange} className="text-white" textColor="inherit" >
                             <Tab label="Evidences" />
                             <Tab label="Events" />
                             <Tab label="Logs" />
@@ -208,6 +208,8 @@ function SessionInfo() {
                           </div>
                         </TabPanel>
                         <TabPanel value={value} index={1}>
+                          <div style={{ height: 500, overflow: 'auto' }}>
+
                           <Timeline sx={{
                             [`& .${timelineItemClasses.root}:before`]: {
                               flex: 0,
@@ -216,8 +218,10 @@ function SessionInfo() {
                           }}>
                             {events}
                           </Timeline>
+                          </div>
                         </TabPanel>
                         <TabPanel value={value} index={2}>
+                          <p className="text-white">onder constructie</p>
                         </TabPanel>
                       </div>
                     </div>
