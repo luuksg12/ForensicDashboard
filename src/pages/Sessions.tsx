@@ -49,16 +49,16 @@ function Sessions() {
           <td >
             <IsLiveBadge IsLive={isLive} />
           </td>
-          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id } })}>
+          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id, user: loggedInUser } })}>
             <div className="d-flex align-items-center">
               <p className="fw-normal mb-1">{session.description}</p>
             </div>
           </td>
-          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id } })}>
+          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id, user: loggedInUser } })}>
             <p className="fw-normal mb-1">{startTime}</p>
             <p className="fw-normal">{stopTime}</p>
           </td>
-          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id } })}>
+          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id, user: loggedInUser } })}>
             {session.participants?.map((participant, index) => {
               if (participant.user.role == 0)
                 return (
@@ -66,7 +66,7 @@ function Sessions() {
                 )
             })}
           </td>
-          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id } })}>
+          <td onClick={() => navigate("/SessionInfo", { state: { data: session.id, user: loggedInUser } })}>
             {session.participants?.map((participant, index) => {
               if (participant.user.role == 1)
                 return (

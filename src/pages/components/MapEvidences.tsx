@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../../styling/Map.css"
-import { Session } from './../../models/session.model'
+import { Session } from './../../models/Session'
 
 interface SessionProp {
     session: Session
 }
 
 export function MapEvidences(props: SessionProp) {
-    // const evidences = props.session.scene.evidences
+    const evidences = props.session.scene.evidences
     const events = props.session.events
-    // const [evidenceList] = useState(evidences)
+    const [evidenceList] = useState(evidences)
     const [session] = useState(props.session)
     // translatedZvalue and translatedXvalue are temporary fixes for a specific map.
     // will 100% break whenever a new map is being used with a different layout.
@@ -27,13 +27,13 @@ export function MapEvidences(props: SessionProp) {
 
     return (
         <>
-            {/* {evidenceList.map((value, index) => {
+            {evidenceList.map((value, index) => {
                 let found = "false";
                 if (events.filter(event => event.evidenceId === value.id).length != 0) {
                     found = "true";
                 }
-                return <div key={value.id} className={"evidence " + found} style={{ left: `${translatedZvalue(value.z)}%`, top: `${translatedXvalue(value.x)}%` }}>{index}</div>
-            })} */}
+                return <div key={value.id} className={"evidence " + found} style={{ left: `${translatedZvalue(value.z)}%`, top: `${translatedXvalue(value.x)}%` }}>{index+1}</div>
+            })}
         </>
     )
 }

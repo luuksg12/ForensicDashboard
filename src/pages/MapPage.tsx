@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Map from "./components/Map";
 import "../styling/MapPage.css"
-import { Session } from "../models/session.model";
+import { Session } from "../models/Session";
 import { EvidenceType } from "../models/enums"
 
 function MapPage (){
