@@ -208,7 +208,25 @@ function SessionInfo() {
                           </div>
                         </TabPanel>
                         <TabPanel value={value} index={1}>
-                          <div style={{ height: 500, overflow: 'auto' }}>
+                        <Box sx={{
+                          height: "500px",
+                          overflow:"auto",
+                          scrollbarWidth: 'thick',
+                          '&::-webkit-scrollbar': {
+                            width: '0.8em',
+                          },
+                          '&::-webkit-scrollbar-track': {
+                            background: "#dddddd",
+                            borderRadius: '20em'
+                          },
+                          '&::-webkit-scrollbar-thumb': {
+                            backgroundColor: '#94969F',
+                            borderRadius: '20em'
+                          },
+                          '&::-webkit-scrollbar-thumb:hover': {
+                            background: '#212529'
+                          }
+                          }}>
 
                           <Timeline sx={{
                             [`& .${timelineItemClasses.root}:before`]: {
@@ -217,8 +235,8 @@ function SessionInfo() {
                             },
                           }}>
                             {events}
-                          </Timeline>
-                          </div>
+                          </Timeline>i
+                          </Box>
                         </TabPanel>
                         <TabPanel value={value} index={2}>
                           <p className="text-white">onder constructie</p>
