@@ -11,7 +11,7 @@ import { MAP_DEMO } from "../../img/all";
 import { HOST } from "../../Constants";
 
 export function Map(props: {session: Session}) {
-  const [session, setSession] = useState(props.session)
+  // const [session, setSession] = useState(props.session)
   const [open, setOpen] = React.useState(false);
 
   
@@ -34,7 +34,7 @@ export function Map(props: {session: Session}) {
       <div className="row ">
         <div className="col map p-0">
           <img src={MAP_DEMO} style={{ width: '100%', height: '100%' }} alt="Map"/>
-          <MapEvidences session={session}/>
+          <MapEvidences session={props.session}/>
         </div>
         <Toolbar className="bg-dark" style={{ borderBottomLeftRadius: 5,borderBottomRightRadius: 5}} variant="dense">
             <IconButton size="large" onClick={() => setOpen(true)}>
@@ -51,7 +51,7 @@ export function Map(props: {session: Session}) {
           <DialogContent>
             <div className="col map p-0">
               <img src={MAP_DEMO} style={{ width: '100%', height: '100%' }} alt="Map"/>
-              <MapEvidences session={session}/>
+              <MapEvidences session={props.session}/>
             </div>
             
           </DialogContent>

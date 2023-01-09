@@ -4,7 +4,7 @@ import Map from "./components/Map";
 import "../styling/SessionInfo.css"
 // import { Evidence } from './../models/session.model'
 // import { User } from './../models/user.model'
-import { Session, User, Evidence, Participant } from "../models/Session";
+import { Session, Evidence, Participant } from "../models/Session";
 import IsLiveBadge from "./components/IsLiveBadge";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { ActionType, EvidenceType, FilterType, LightType } from "../models/enums";
@@ -140,7 +140,6 @@ function SessionInfo() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-
 
   if (SessionInfo != undefined) {
     return (
