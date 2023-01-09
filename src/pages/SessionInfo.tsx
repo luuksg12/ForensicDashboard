@@ -30,23 +30,28 @@ function SessionInfo() {
   const TRAINEE = 0
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result: Session = await (await Http.request(Method.POST, `${HOST}/sessions/single`, { sessionId: sessionId })).json()
-      setSessionInfo(result);
-      let supervisorList: Participant[] = result.participants.filter((participant: Participant) => {
-        if (participant.user.role === SUPERVISOR) return participant.user;
-      });
+  const fetchData = async () => {
+    const result: Session = await (await Http.request(Method.POST, `${HOST}/sessions/single`, { sessionId: sessionId })).json()
+    setSessionInfo(result);
+    let supervisorList: Participant[] = result.participants.filter((participant: Participant) => {
+      if (participant.user.role === SUPERVISOR) return participant.user;
+    });
 
-      let traineeList: Participant[] = result.participants.filter((participant) => {
-        if (participant.user.role === TRAINEE) return participant.user;
-      });
-      let evidences = result?.scene?.evidences
-      setSupervisors(supervisorList)
-      setTrainees(traineeList)
-      setEvidenceList(evidences)
-    };
-    fetchData();
+    let traineeList: Participant[] = result.participants.filter((participant) => {
+      if (participant.user.role === TRAINEE) return participant.user;
+    });
+    let evidences = result?.scene?.evidences
+    setSupervisors(supervisorList)
+    setTrainees(traineeList)
+    setEvidenceList(evidences)
+  };
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchData();
+    }, 500);
+    return () => clearInterval(interval);
   }, []);
 
 
@@ -82,7 +87,6 @@ function SessionInfo() {
 
 
   const events = SessionInfo?.events.map((event, index) => {
-    console.log(event)
     return (<TimelineItem key={index}>
       <TimelineSeparator>
         <TimelineDot variant="outlined">
@@ -253,12 +257,6 @@ function SessionInfo() {
     )
   }
   return <div />;
-  return (
-    <>
-      <div>
-
-      </div>
-    </>)
 }
 
 export default SessionInfo;
