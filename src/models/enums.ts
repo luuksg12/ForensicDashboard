@@ -28,3 +28,9 @@ export enum FilterType{
     '529nm' = 3,
     '549nm' = 4,
 }
+
+export enum RelevanceType{
+    Low = 0,
+    Medium = 1,
+    High = 2
+}

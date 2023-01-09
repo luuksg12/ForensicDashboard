@@ -7,7 +7,7 @@ import "../styling/SessionInfo.css"
 import { Session, Evidence, Participant } from "../models/Session";
 import IsLiveBadge from "./components/IsLiveBadge";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { ActionType, EvidenceType, FilterType, LightType } from "../models/enums";
+import { ActionType, EvidenceType, FilterType, LightType, RelevanceType } from "../models/enums";
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -107,6 +107,7 @@ function SessionInfo() {
           })[0])}</Typography>
         <Typography>Filter: {FilterType[event?.filter]}</Typography>
         <Typography>Light: {LightType[event?.light]}</Typography>
+        <Typography>Relevance: {RelevanceType[event?.relevance]}</Typography>
       </TimelineContent>
     </TimelineItem>)
   }
