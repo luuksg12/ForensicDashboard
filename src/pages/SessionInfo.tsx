@@ -7,7 +7,7 @@ import "../styling/SessionInfo.css"
 import { Session, User, Evidence, Participant } from "../models/Session";
 import IsLiveBadge from "./components/IsLiveBadge";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { ActionType, EvidenceType, FilterType, LightType } from "../models/enums";
+import { ActionType, EvidenceType, FilterType, RelevanceType, LightType } from "../models/enums";
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -82,12 +82,14 @@ function SessionInfo() {
 
 
   const events = SessionInfo?.events.map((event, index) => {
+
+    const evidence = evidenceList[index].type
     console.log(event)
     return (<TimelineItem key={index}>
       <TimelineSeparator>
         <TimelineDot variant="outlined">
           <div style={{ height: "20px", width: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="text-white">
-            {index}
+            {index + 1}
           </div>
         </TimelineDot>
         <TimelineConnector />
@@ -97,12 +99,12 @@ function SessionInfo() {
           {ActionType[event.action]}
           <Typography className="ms-1 text-secondary">[{new Date(event.timeStamp).getHours()}:{new Date(event.timeStamp).getMinutes()}:{new Date(event.timeStamp).getSeconds()}]</Typography>
         </Typography>
-        <Typography>Evidence: {evidenceList?.indexOf(evidenceList?.filter(
-          function (e) {
-            return e.id == event.evidenceId
-          })[0])}</Typography>
-        <Typography>Filter: {FilterType[event?.filter]}</Typography>
-        <Typography>Light: {LightType[event?.light]}</Typography>
+        <Typography>Evidence: {EvidenceType[evidence]}
+
+          </Typography>
+        <Typography>Relevance: {RelevanceType[event?.relevance]}</Typography>
+        <Typography>Filter: {event?.filter}</Typography>
+        <Typography>Light: {event?.light}</Typography>
       </TimelineContent>
     </TimelineItem>)
   }

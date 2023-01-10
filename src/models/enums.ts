@@ -7,6 +7,12 @@ export enum EvidenceType {
     Fingerprint = 5,
 }
 
+export enum RelevanceType {
+    '-' = 0,
+    'niet relevant' = 1, 
+    'relevant' = 2,
+}
+
 export enum ActionType {
     Found = 0, 
     Dropped= 1,
