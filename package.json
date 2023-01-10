@@ -14,12 +14,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.2.2",
+    "bootstrap": "^5.2.3",
     "g": "^2.0.1",
     "http-proxy-middleware": "^2.0.6",
     "local-cors-proxy": "^1.1.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1",
@@ -35,7 +36,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://145.24.222.175:80",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.2.6",
     "@types/validator": "^13.7.10"
   }
 }

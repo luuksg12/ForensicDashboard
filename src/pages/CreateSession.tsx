@@ -90,11 +90,14 @@ function CreateSession() {
             if (trainee.fullname === Player2Selected) return trainee.id
         })
 
+        const filter = (array:(string | undefined)[]) => {
+            return array.filter((x:string | undefined) => x !== undefined)[0];
+        }
         const body = {
-            sceneId: sceneId[0],
-            userId_supervisor: userId_supervisor[0],
-            userId_trainee1: userId_trainee1[0],
-            userId_trainee2: userId_trainee2[0],
+            sceneId: filter(sceneId),
+            userId_supervisor: filter(userId_supervisor),
+            userId_trainee1: filter(userId_trainee1),
+            userId_trainee2: filter(userId_trainee2),
             description: "No description."
         }
         await Http.request(Method.POST, `${HOST}/session/create`, body)
