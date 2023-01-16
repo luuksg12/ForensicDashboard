@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      HOST: '0.0.0.0'
+    command: >
+      sh -c "npm start"
