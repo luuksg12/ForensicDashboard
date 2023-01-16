@@ -12,6 +12,10 @@ cd ./TNO_Sim
 docker-compose up -d
 
 npm i local-cors-proxy
+
+// localhost should be replaced by the host address of the 
+// API. you can find a docker image for the API here:
+// https://github.com/martijnlammers/TNO_Sim
 npx lcp --proxyUrl http://localhost
 ```
 ### Go to application.
