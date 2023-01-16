@@ -9,9 +9,9 @@ NodeJS | 16.12.0 | node --version
 ```bash
 git clone https://github.com/luuksg12/ForensicDashboard.git
 cd ./TNO_Sim
-docker-compose up
+docker-compose up -d
 
-// In a second terminal
+npm i local-cors-proxy
 npx lcp --proxyUrl http://localhost
 ```
 ### Go to application.
