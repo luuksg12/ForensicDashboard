@@ -107,8 +107,8 @@ function SessionInfo() {
 
           </Typography>
         <Typography>Relevance: {RelevanceType[event?.relevance]}</Typography>
-        <Typography>Filter: {event?.filter}</Typography>
-        <Typography>Light: {event?.light}</Typography>
+        <Typography>Filter: {FilterType[event?.filter]}</Typography>
+        <Typography>Light: {LightType[event?.light]}</Typography>
       </TimelineContent>
     </TimelineItem>)
   }

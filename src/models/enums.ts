@@ -1,36 +1,37 @@
 export enum EvidenceType {
-    Gunpowder = 0,
-    Sperm = 1, 
-    Saliva = 2, 
-    Blood = 3,
-    Fibers = 4,
-    Fingerprint = 5,
+    GunPowder,
+    Sperm, 
+    Saliva, 
+    Blood,
+    Fibers,
+    FingerPrint,
+    FingerPrintsDeveloped
 }
 
 export enum ActionType {
-    Found = 0, 
-    Dropped= 1,
-    PickedUp = 2
+    Found, 
+    Dropped,
+    PickedUp 
 }
 
 export enum LightType{
-    White = 0,
-    Violet = 1,
-    Blue = 2,
-    BlueGreen = 3,
-    Green = 4
+    FlashLightWhite,
+    FlashLightViolet_425nm,
+    FlashLightBlue_450nm,
+    "FlashLightBlue/Green_485nm",
+    FlashLightGreen_520nm
 }
 
 export enum FilterType{
-    'Base' = 0,
-    '435nm' = 1,
-    '476nm' = 2,
-    '529nm' = 3,
-    '549nm' = 4,
+    GlassesBase,
+    Glasses435,
+    Glasses476,
+    Glasses529,
+    Glasses549 
 }
 
 export enum RelevanceType{
-    Low = 0,
-    Medium = 1,
-    High = 2
+    Low,
+    Medium,
+    High
 }
