@@ -1,1 +1,1 @@
-export const HOST = "http://localhost:8010/proxy"
+export const HOST = "http://localhost"
