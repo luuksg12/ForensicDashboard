@@ -1,5 +1,8 @@
 FROM node:16
+WORKDIR /src
 COPY . . 
+ENV HOST=0.0.0.0
 RUN npm i 
 RUN npm i local-cors-proxy
-# CMD ['npm', 'start']
+RUN npm i react-scripts
+CMD ['npm', 'start']
