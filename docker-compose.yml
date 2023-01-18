@@ -5,10 +5,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - '3000:3000'
+      - '3333:3000'
     environment:
       HOST: '0.0.0.0'
     command: >
       sh -c "npm start"
-    volumes:
-      - ./src:/src
