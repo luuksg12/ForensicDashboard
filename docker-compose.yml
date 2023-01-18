@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - '3000:3000'
+      - '3333:3333'
     environment:
       HOST: '0.0.0.0'
     command: >
