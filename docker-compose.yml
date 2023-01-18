@@ -10,3 +10,5 @@ services:
       HOST: '0.0.0.0'
     command: >
       sh -c "npm start"
+    volumes:
+      - ./src:/src
