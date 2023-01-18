@@ -19,5 +19,5 @@ npm i local-cors-proxy
 npx lcp --proxyUrl http://localhost
 ```
 ### Go to application.
-The application will be hosted on: 'http://localhost:3000'
+The application will be hosted on: 'http://localhost:3333'
 
